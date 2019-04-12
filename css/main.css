@@ -54,18 +54,18 @@ button#create-task {
 
 main {
     position: relative;
-    top: 32px;
+    top: 40px;
 }
 
-ul {
+ul#boardList {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     padding-left: 0;
-    margin: 2% 15% 5% 15%;
+    margin-left: 0;
 }
 
-li.add-board {
+li#board-tile {
     background-color: #E5E8EA;
     color: #94A3AB;
     width: 160px;
@@ -79,15 +79,42 @@ li.add-board {
     position: relative;
 }
 
-p {
+button#create-board {
     margin: 0;
     padding: 0;
+    width: 160px;
+    height: 96px;
+    font-weight: bold;
+    color: #94A3AB;
+    border: none;
 }
 
-span.create-board {
+/* .created-list-item {
+    background-color: #E5E8EA;
+    color: #94A3AB;
+    width: 160px;
+    height: 96px;
+    font-weight: bold;
+    line-height: 96px;
+    border: 2% solid #E5E8EA;
+    border-radius: 4px;
     text-align: center;
-    padding: 0;
+    margin: 2%;
+    position: relative;
+} */
+
+.created-board {
+    background-color: red;
+    color: #94A3AB;
+    width: 160px;
+    height: 96px;
+    font-weight: bold;
+    line-height: 96px;
+    border: 2% solid #E5E8EA;
+    border-radius: 4px;
+    text-align: center;
     margin: 0;
+    position: relative;
 }
 
 footer {
