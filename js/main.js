@@ -11,8 +11,16 @@ document.getElementById('create-new-board').addEventListener('click', function()
     
     var boarddiv = document.createElement('div');
     boarddiv.className = 'created-board board-tile-new';
-    boarddiv.innerHTML = boardname;
+    // boarddiv.innerHTML = boardname;
     
+    var boardlink = document.createElement('a');
+    boardlink.className = 'brdlnk';
+    boardlink.id = 'brdId';
+    boardlink.innerHTML = boardname;
+    boarddiv.appendChild(boardlink);
+    
+    boardlink.setAttribute('href', 'www.google.com');
+
     var newboard = document.createElement('li');
     newboard.className = 'board-tile';
     newboard.appendChild(boarddiv);
