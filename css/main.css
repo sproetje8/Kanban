@@ -63,54 +63,44 @@ ul#boardList {
     justify-content: flex-start;
     padding-left: 0;
     margin-left: 0;
+    list-style: none;
 }
 
-li#board-tile {
-    background-color: #E5E8EA;
-    color: #94A3AB;
+li.board-tile {
+    background-color: transparent;
     width: 160px;
     height: 96px;
-    font-weight: bold;
-    line-height: 96px;
-    border: 2% solid #E5E8EA;
-    border-radius: 4px;
-    text-align: center;
     margin: 2%;
     position: relative;
 }
 
-button#create-board {
+button#create-board, button#create-board:focus {
+    background-color: #e6e9ea;
+    color: #6A7D8B;
     margin: 0;
     padding: 0;
     width: 160px;
     height: 96px;
+    line-height: 96px;
     font-weight: bold;
-    color: #94A3AB;
-    border: none;
+    font-size: 14px;
+    border: 2px solid #e6e9ea;
+    border-radius: 4px;
 }
 
-/* .created-list-item {
-    background-color: #E5E8EA;
-    color: #94A3AB;
-    width: 160px;
-    height: 96px;
-    font-weight: bold;
-    line-height: 96px;
-    border: 2% solid #E5E8EA;
+button#create-board:hover{
+    background-color: #c4c8c9;
+    color: #6A7D8B;
+    border: 2px solid #c4c8c9;
     border-radius: 4px;
-    text-align: center;
-    margin: 2%;
-    position: relative;
-} */
+}
 
-.created-board {
-    background-color: red;
-    color: #94A3AB;
-    width: 160px;
-    height: 96px;
+div.created-board {
+    background-color: #026aa7 ;
+    color: #F7F8F8;
     font-weight: bold;
     line-height: 96px;
-    border: 2% solid #E5E8EA;
+    border: 2% solid #F7F8F8;
     border-radius: 4px;
     text-align: center;
     margin: 0;
@@ -128,4 +118,58 @@ footer {
     color: #026aa7;
     text-align: center;
     line-height: 32px;
+}
+
+.bg-modal {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.modal-content {
+    width: 300px;
+    height: 200px;
+    background-color: white;
+    border-radius: 4px;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+input {
+    width: 80%;
+    display: block;
+    margin: 20px auto;
+    line-height: 36px;
+    font-size: 20px;
+    border-radius: 4px;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.btn-create {
+    width: 100px;
+    height: 32px;
+    line-height: 28px;
+    font-size: 20px;
+    font-weight: bold;
+    display: table-cell;
+    vertical-align: middle;
+    border: 2px solid #026aa7;
+    border-radius: 4px;
+    background-color: #026aa7;
+    color: #e6e9ea;
 }

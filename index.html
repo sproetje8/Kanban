@@ -15,13 +15,23 @@
                 <button id="create-task" type="button"><a class="inactive"><i class="far fa-plus-square"></i> Add a new task</a></button>
             </div>
             <main>
-                <ul class="js-board-container" id="boardList" style="list-style: none;">
+                <ul class="js-board-container" id="boardList">
                     <li id="board-tile">
                         <button id="create-board">Create new board</button>
                     </li>
                 </ul>
             </main>
             <footer>&copy; 2019 Evelien Kulikova</footer>
+            <div class="bg-modal">
+                <div class="modal-content">
+                    <div class="close">+</div>
+                    <img src="images/kanban-icon.jpg" alt="Kanban icon">
+                    <form id="frm1" action="">
+                        <input id="boardName" type="text" placeholder="Enter a Board Name">
+                        <button class="btn-create" id="create-new-board" type="button">Create</button>
+                    </form>
+                </div>
+            </div>
         </div>
         <script src="js/main.js"></script>
     </body>
