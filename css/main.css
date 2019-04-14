@@ -55,6 +55,7 @@ button#create-task {
 main {
     position: relative;
     top: 40px;
+    padding: 0 150px;
 }
 
 ul#boardList {
