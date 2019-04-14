@@ -8,7 +8,7 @@ document.querySelector('.close').addEventListener('click', function(){
 
 document.getElementById('create-new-board').addEventListener('click', function(){
     var boardname = document.getElementById('boardName').value;
-
+    
     var boarddiv = document.createElement('div');
     boarddiv.className = 'created-board board-tile-new';
     boarddiv.innerHTML = boardname;

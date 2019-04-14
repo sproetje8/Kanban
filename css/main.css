@@ -58,34 +58,35 @@ main {
 }
 
 ul#boardList {
+    list-style: none;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
     padding-left: 0;
-    margin-left: 0;
-    list-style: none;
+    margin: 0 0 14 0;
 }
 
 li.board-tile {
     background-color: transparent;
     width: 160px;
     height: 96px;
-    margin: 2%;
-    position: relative;
+    margin: 14px;
+    vertical-align: middle;
 }
+
 
 button#create-board, button#create-board:focus {
     background-color: #e6e9ea;
     color: #6A7D8B;
-    margin: 0;
-    padding: 0;
     width: 160px;
     height: 96px;
     line-height: 96px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     border: 2px solid #e6e9ea;
     border-radius: 4px;
+    margin: 14px;
 }
 
 button#create-board:hover{
@@ -103,8 +104,7 @@ div.created-board {
     border: 2% solid #F7F8F8;
     border-radius: 4px;
     text-align: center;
-    margin: 0;
-    position: relative;
+    /* position: relative; */
 }
 
 footer {
