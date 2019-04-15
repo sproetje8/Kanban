@@ -105,7 +105,46 @@ div.created-board {
     border: 2% solid #F7F8F8;
     border-radius: 4px;
     text-align: center;
-    /* position: relative; */
+    position: relative;
+}
+
+a, .dateCreated, .dateLastEdit {
+    color:  #F7F8F8;
+    display: block;
+}
+
+.dateCreated, .dateLastEdit {
+    font-size: 10px;
+    line-height: 10px;
+    text-align: left;
+    /* padding: 0 0 3px 3px; */
+    position: absolute;
+    bottom: 6px;
+    left: 10px;
+}
+
+.dateLastEdit {
+    bottom: 18px;
+}
+
+#board-settings {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 3px;
+    right: 3px;
+    border: 2px solid #026aa7;
+    border-radius: 4px;
+}
+
+#del-board {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    bottom: 3px;
+    right: 3px;
+    border: 2px solid #026aa7;
+    border-radius: 4px;
 }
 
 footer {
