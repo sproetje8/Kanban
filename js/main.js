@@ -38,7 +38,7 @@ document.getElementById('create-new-board').addEventListener('click', function()
     
     var lastEdit = document.createElement('span');
     lastEdit.className = 'dateLastEdit';  
-    lastEdit.innerHTML = 'Last edited : ' + today;  
+    lastEdit.innerHTML = 'Last edit : ' + today;  
 
     var delbtn = document.createElement('img');
     delbtn.className = 'delete';

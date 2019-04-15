@@ -115,9 +115,8 @@ a, .dateCreated, .dateLastEdit {
 
 .dateCreated, .dateLastEdit {
     font-size: 10px;
-    line-height: 10px;
+    line-height: 16px;
     text-align: left;
-    /* padding: 0 0 3px 3px; */
     position: absolute;
     bottom: 6px;
     left: 10px;
