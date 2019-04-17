@@ -7,19 +7,21 @@ document.querySelector('.close').addEventListener('click', function(){
 });
 
 document.getElementById('create-new-board').addEventListener('click', function(){
+    // var obj = {};
     var boardname = document.getElementById('boardName').value;
-    
+    obj.name = boardname;
+
     var boarddiv = document.createElement('div');
     boarddiv.className = 'created-board board-tile-new';
-    // boarddiv.innerHTML = boardname;
-    
+        
+    // create link to boardpage
     var boardlink = document.createElement('a');
     boardlink.className = 'brdlnk';
     boardlink.id = 'brdId';
     boardlink.innerHTML = boardname;
     boardlink.setAttribute('href', 'www.google.com');
 
-    // function currentDate(){
+    // function for layout of current Date
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth()+1; 
@@ -36,9 +38,9 @@ document.getElementById('create-new-board').addEventListener('click', function()
     createdOn.className = 'dateCreated';
     createdOn.innerHTML = 'Created : ' + today;
     
-    var lastEdit = document.createElement('span');
-    lastEdit.className = 'dateLastEdit';  
-    lastEdit.innerHTML = 'Last edit : ' + today;  
+    // var lastEdit = document.createElement('span');
+    // lastEdit.className = 'dateLastEdit';  
+    // lastEdit.innerHTML = 'Last edit : ' + today;  
 
     var delbtn = document.createElement('img');
     delbtn.className = 'delete';
@@ -56,7 +58,7 @@ document.getElementById('create-new-board').addEventListener('click', function()
     boarddiv.appendChild(delbtn);
     boarddiv.appendChild(settingsbtn);
     boarddiv.appendChild(createdOn);
-    boarddiv.appendChild(lastEdit);
+    // boarddiv.appendChild(lastEdit);
 
 
     var newboard = document.createElement('li');
@@ -65,6 +67,15 @@ document.getElementById('create-new-board').addEventListener('click', function()
     
     document.getElementById('boardList').appendChild(newboard);
 
+    
     document.querySelector('.bg-modal').style.display = 'none';
+    
+    // var board = new Object;
+    // board.name = boardname;
+    // board.created = today;
 });
 
+// to be added later when clicking on 'Save button' in the boardpage
+// var lastEdit = document.createElement('span');
+// lastEdit.className = 'dateLastEdit';  
+// lastEdit.innerHTML = 'Last edit : ' + today;  
