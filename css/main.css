@@ -138,22 +138,24 @@ a, .dateCreated, .dateLastEdit {
 
 #del-board {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    bottom: 3px;
-    right: 3px;
+    width: 18px;
+    height: 18px;
+    bottom: 2px;
+    right: 2px;
     padding: 0;
     margin: 0;
-    border: 2px solid #026aa7;
+    border: 1px solid #026aa7;
     border-radius: 4px;
 }
 
 #del-board-img {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     position: absolute;
     bottom: 0px;
     right: 0px;
+    border: 1px;
+    border-radius: 4px;
 }
 
 footer {
@@ -221,4 +223,8 @@ input {
     border-radius: 4px;
     background-color: #026aa7;
     color: #e6e9ea;
+}
+
+.btn-create:hover {
+    opacity: 0.8;
 }

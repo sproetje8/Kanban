@@ -39,25 +39,38 @@ document.getElementById('create-new-board').addEventListener('click', function()
     createdOn.className = 'dateCreated';
     createdOn.innerHTML = 'Created : ' + today;
     
+    // create settings button
     var settingsbtn = document.createElement('img');
     settingsbtn.className = 'settings';
     settingsbtn.id = 'board-settings';
     settingsbtn.setAttribute('src', '/images/settings-icon.png');
     settingsbtn.setAttribute('alt', 'settings button');
     
+    // wrap settings button in a link
+    var settingslink = document.createElement('a');
+    settingslink.className = 'settings-link';
+    settingslink.id = 'board-settings-link';
+    settingslink.appendChild(settingsbtn);
+    
+    //create image for delete button
     var delimg = document.createElement('img');
     delimg.className = 'del-img';
     delimg.id = 'del-board-img';
     delimg.setAttribute('src', '/images/delete-icon.png');
     delimg.setAttribute('alt', 'delete button');
-    
+
+    // create delete button
     var delbtn = document.createElement('button');
     delbtn.className = 'delete';
     delbtn.id = 'del-board';
     delbtn.appendChild(delimg);
+    delbtn.addEventListener('click', function () {
+        newboard.parentNode.removeChild(newboard);
+    })
     
+    // add all parts to the board div
     boarddiv.appendChild(boardlink);
-    boarddiv.appendChild(settingsbtn);
+    boarddiv.appendChild(settingslink);
     boarddiv.appendChild(createdOn);
     boarddiv.appendChild(delbtn);
     
@@ -72,10 +85,9 @@ document.getElementById('create-new-board').addEventListener('click', function()
     return newboard;
     return boardname;
 });
-document.getElementById('del-board').addEventListener('click', function(){
-    document.getElementById('boardList').removeChild(newboard);
-    return newboard;
-});
+// document.getElementById('del-board').addEventListener('click', function(){
+//     document.getElementById('boardList').removeChild(newboard);
+// });
 
 // var lastEdit = document.createElement('span');
 // lastEdit.className = 'dateLastEdit';  
