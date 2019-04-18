@@ -142,8 +142,18 @@ a, .dateCreated, .dateLastEdit {
     height: 20px;
     bottom: 3px;
     right: 3px;
+    padding: 0;
+    margin: 0;
     border: 2px solid #026aa7;
     border-radius: 4px;
+}
+
+#del-board-img {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
 }
 
 footer {
