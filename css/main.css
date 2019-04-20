@@ -127,6 +127,8 @@ a, .dateCreated, .dateLastEdit {
 }
 
 #board-settings {
+    background-color: white;
+    color: black;
     position: absolute;
     width: 20px;
     height: 20px;
@@ -137,18 +139,24 @@ a, .dateCreated, .dateLastEdit {
 }
 
 #del-board {
+    font-family: 'FontAwesome';
     position: absolute;
-    width: 18px;
-    height: 18px;
-    bottom: 2px;
-    right: 2px;
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    bottom: 3px;
+    right: 3px;
     padding: 0;
     margin: 0;
-    border: 1px solid #026aa7;
+    border: 2px solid #026aa7;
     border-radius: 4px;
+    z-index: 1;
+    cursor: pointer;
 }
 
-#del-board-img {
+#trash {
+    background: white;
+    color: black;
     width: 16px;
     height: 16px;
     position: absolute;
@@ -156,6 +164,7 @@ a, .dateCreated, .dateLastEdit {
     right: 0px;
     border: 1px;
     border-radius: 4px;
+    z-index: 5;
 }
 
 footer {
