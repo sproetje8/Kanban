@@ -205,6 +205,7 @@ footer {
     justify-content: center;
     align-items: center;
     display: none;
+    z-index: 10;
 }
 
 .modal-content {
@@ -215,6 +216,7 @@ footer {
     text-align: center;
     padding: 20px;
     position: relative;
+    z-index: 12;
 }
 
 input {
