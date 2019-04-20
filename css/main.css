@@ -107,10 +107,37 @@ div.created-board {
     text-align: center;
     position: relative;
 }
+#board-settings-div {
+    z-index: 2;
+}
+
+#board-settings {
+    background-color: white;
+    color: black;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 3px;
+    right: 3px;
+    border: 2px solid #026aa7;
+    border-radius: 4px;
+    z-index: 5;
+}
+
+/* .boarddiv-wrap {
+    width: 160px;
+    height: 36px;
+    line-height: 36px; 
+} */
+
 
 a, .dateCreated, .dateLastEdit {
     color:  #F7F8F8;
     display: block;
+}
+
+#brdId:hover {
+    opacity: 0.7;
 }
 
 .dateCreated, .dateLastEdit {
@@ -124,18 +151,6 @@ a, .dateCreated, .dateLastEdit {
 
 .dateLastEdit {
     bottom: 18px;
-}
-
-#board-settings {
-    background-color: white;
-    color: black;
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    top: 3px;
-    right: 3px;
-    border: 2px solid #026aa7;
-    border-radius: 4px;
 }
 
 #del-board {
