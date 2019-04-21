@@ -1,17 +1,33 @@
-document.getElementById('create-board').addEventListener('click', function(){
-document.querySelector('.bg-modal').style.display = 'flex';
-});
-
-var boards = [];
+function openModal(){
+    document.getElementById('create-board').addEventListener('click', function(){
+    document.querySelector('.bg-modal').style.display = 'flex';
+    });
+}
 
 document.querySelector('.close').addEventListener('click', function(){
     document.querySelector('.bg-modal').style.display = 'none';
 });
 
+document.getElementById('create-new-board').addEventListener('click', checkInput);
 
+var boardname = '';
+function checkInput(){
+    boardname = document.getElementById('boardName').value;
+    var regexp1 = new RegExp('^[A-Za-z\s]{3,}$');
+    if(!regexp1.test(boardname))
+    { 
+        alert('Alphabets only, min 3');
+    } else {
+        createBoard();
+    }
+}
+
+var boards = [];
 var newboard;
-function createBoard(boardname) {
+function createBoard() {
     // get user input for board name
+    boardname = document.getElementById('boardName').value;
+
     // function for layout of current Date
     var today = new Date();
     var dd = today.getDate();
@@ -24,7 +40,7 @@ function createBoard(boardname) {
         mm ='0'+ mm;
     } 
     today = mm + '-' + dd + '-' + yyyy;
-    
+
     addBoard(boardname, today);
     saveBoard(boardname, today);
 }
@@ -46,12 +62,12 @@ function addBoard(boardname, today){
     // create tiles for new boards
     var boarddiv = document.createElement('div');
     boarddiv.className = 'created-board board-tile-new';
-    
+        
     // create settings icon
     var settingsicon = document.createElement('i');
     settingsicon.setAttribute('class', 'fas fa-cog');
     settingsicon.id = 'board-settings';
-    
+        
     // wrap settings image in a link
     var settingslink = document.createElement('a');
     settingslink.className = 'settings-link';
@@ -82,12 +98,12 @@ function addBoard(boardname, today){
     var createdOn = document.createElement('span');
     createdOn.className = 'dateCreated';
     createdOn.innerHTML = 'Created : ' + today;
-    
+
     //create image for delete button
     var delicon = document.createElement('i');
     delicon.setAttribute('class', 'far fa-trash-alt');
     delicon.id = 'trash';
-    
+
     // create delete button
     var delbtn = document.createElement('button');
     delbtn.className = 'delete';
@@ -106,40 +122,28 @@ function addBoard(boardname, today){
         newboard.parentNode.removeChild(newboard);
         saveBoardsToStorage();
     });
-    
+
     // add all parts to the board div
     boarddiv.appendChild(settingsdiv);
     boarddiv.appendChild(namediv);
     boarddiv.appendChild(createdOn);
     boarddiv.appendChild(delbtn);
     
-    var newboard = document.createElement('li');
+    newboard = document.createElement('li');
     newboard.className = 'board-tile';
     newboard.appendChild(boarddiv);
     
     document.getElementById('boardList').appendChild(newboard);
     
     document.querySelector('.bg-modal').style.display = 'none';
-    
+
     return newboard;
 }
 
-document.getElementById('create-new-board').addEventListener('click', validateInput);
-var boardname = document.getElementById('boardName').value;
-
-function validateInput(boardname) {
-    var regex = new RegExp('[A-Za-z\s]{3,}$/');
-    
-    if(!regex.test(boardname)) {
-        alert("Letters only, min 3, unique");
-    }else {
-        createBoard;
-    }
-}
 function init() {
     boards = JSON.parse(localStorage.getItem('boards')) || [];
     boards.forEach(function (board) {
-        addBoard(board.name, board.created);
+        openModal();
     });
 }
 

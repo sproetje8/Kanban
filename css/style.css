@@ -210,7 +210,7 @@ footer {
 
 .modal-content {
     width: 300px;
-    height: 200px;
+    height: 250px;
     background-color: white;
     border-radius: 4px;
     text-align: center;
@@ -219,13 +219,29 @@ footer {
     z-index: 12;
 }
 
+#kanban-icon {
+    margin-bottom: 20px;
+}
+
+label {
+    margin: 0;
+    padding: 0;
+    color: #777777;
+    position: absolute;
+    width: 80%;
+    bottom: 144px;
+    left: 50px;
+    text-align: left;
+}
+
 input {
     width: 80%;
     display: block;
     margin: 20px auto;
     line-height: 36px;
-    font-size: 20px;
+    font-size: 16px;
     border-radius: 4px;
+    padding: 4px;
 }
 
 .close {

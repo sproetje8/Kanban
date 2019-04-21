@@ -4,7 +4,7 @@
         <title>Kanban Board</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-        <link type="text/css" rel="stylesheet" href="css/main.css">
+        <link type="text/css" rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <div id="allcontent">
@@ -25,9 +25,10 @@
             <div class="bg-modal">
                 <div class="modal-content">
                     <div class="close">+</div>
-                    <img src="images/kanban-icon.jpg" alt="Kanban icon">
+                    <img src="images/kanban-icon.jpg" id="kanban-icon" alt="Kanban icon">
                     <form id="frm1" action="" novalidate>
-                        <input id="boardName" type="text" placeholder="Enter a Board Name">
+                        <label for='boardName'>Enter a Board Name<br/><em>(Alphabets only, min 3, unique)</em></label>
+                        <input id="boardName" type="text" autocomplete="off" autofocus>
                         <button class="btn-create" id="create-new-board" type="button">Create</button>
                     </form>
                 </div>
