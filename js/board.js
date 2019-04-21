@@ -1,3 +1,16 @@
+function(boardname) {
+    alert('boardname');
+}
+
+
+
+
+
+
+
+
+
+
 // var lastEdit = document.createElement('span');
 // lastEdit.className = 'dateLastEdit';  
 // lastEdit.innerHTML = 'Last edit : ' + today;  

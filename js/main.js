@@ -110,9 +110,9 @@ function addBoard(boardname, today){
     // create link to boardpage
     var boardlink = document.createElement('a');
     boardlink.className = 'brdlnk';
-    boardlink.id = 'brdId';
+    boardlink.id = boardname;
     boardlink.innerHTML = boardname;
-    boardlink.setAttribute('href', 'https://dictionary.cambridge.org/');
+    boardlink.setAttribute('href', 'board.html');
     namediv.appendChild(boardlink);
     
     // add date when board was created;

@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+    <head >
         <title>Board Name</title>
         <meta charset="utf-8">
         <link type="text/css" rel="stylesheet" href="css/board.css">
     </head>
-    <body>
+    <body id="boardpage">
         <header id="header">
             <div class="boardpage-head">
-                <h1>Board name</h1>
+                <h1>Board Name</h1>
             </div>
             <div class="filters">
                 <div class="filtername">
-                    <span>QUICK FILTERS:</span>
+                    <span id="quick-filters">QUICK FILTERS:</span>
                 </div>
                 <nav>
                     <ul>
-                        <li>Only my partners</li>
-                        <li>Critical partners</li>
-                        <li>Recently updated</li>
+                        <li class="nav-panel">Only my partners</li>
+                        <li class="nav-panel">Critical partners</li>
+                        <li class="nav-panel">Recently updated</li>
                     </ul>
                 </nav>
             </div>
         </header>
-        <section id="board-taskSettings-wrap">
+        <section id="board-wrap">
             <div id="board-overview">
-                <ul class="to-do" id="col-1">
-                    <li class="to-do col-head">To do</li>
-                </ul>
-                <ul class="in-progress" id="col-2">
-                    <li class="in-progress col-head">In progress</li>                    
-                </ul>
-                <ul class="done" id="col-3">
-                    <li class="done col-head">Done</li>
+                <ul id="columns">
+                    <ul class="to-do" id="col-1">
+                        <li class="to-do col-head">To do</li>
+                    </ul>
+                    <ul class="in-progress" id="col-2">
+                        <li class="in-progress col-head">In progress</li>                    
+                    </ul>
+                    <ul class="done" id="col-3">
+                        <li class="done col-head">Done</li>
+                    </ul>
                 </ul>
             </div>
-        </section>
-        <section>
-            <div>
+            <div id="task-info">
                 Task Information
             </div>
         </section>
