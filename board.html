@@ -1,27 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Current Board</title>
+        <title>Board Name</title>
         <meta charset="utf-8">
-        <link type="text/css" rel="stylesheet" href="board.css"
+        <link type="text/css" rel="stylesheet" href="css/board.css">
     </head>
     <body>
         <header id="header">
-            <div id="page-navigator">
+            <div class="boardpage-head">
+                <h1>Board name</h1>
             </div>
-            <h1>Team Kanban Board</h1>
-                <p>QUICK FILTERS:
-                    <nav>                              <nav>Critical partners</nav>button>
-                        <button>Only my partners</button>
-                        <button>Recently updated</button>
-                    </nav>
-                </p>
+            <div class="filters">
+                <div class="filtername">
+                    <span>QUICK FILTERS:</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li>Only my partners</li>
+                        <li>Critical partners</li>
+                        <li>Recently updated</li>
+                    </ul>
+                </nav>
+            </div>
         </header>
-        </div>
-        <div id="main">
-            <div>To do</div>
-            <div>In progress</div>
-            <div>Done</div>
-        </div>
+        <section id="board-taskSettings-wrap">
+            <div id="board-overview">
+                <ul class="to-do" id="col-1">
+                    <li class="to-do col-head">To do</li>
+                </ul>
+                <ul class="in-progress" id="col-2">
+                    <li class="in-progress col-head">In progress</li>                    
+                </ul>
+                <ul class="done" id="col-3">
+                    <li class="done col-head">Done</li>
+                </ul>
+            </div>
+        </section>
+        <section>
+            <div>
+                Task Information
+            </div>
+        </section>
     </body>
 </html>

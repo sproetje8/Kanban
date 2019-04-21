@@ -6,7 +6,6 @@ body {
     min-height: 100%;
     padding: 0px;
     margin: 0;
-    
 }
 
 #allcontent {
@@ -50,6 +49,25 @@ button#create-task {
     color: #777777;
     border-radius: 5px;
     height: 26px;
+    /* cursor: none; */
+}
+button#create-task>a {
+    z-index: 5;
+}
+a.inactive {
+    text-decoration-line: none;
+    color: #F7F8F8;
+    cursor: default;
+}
+
+a.active {
+    color: #6A7D8B;
+    cursor: pointer;
+}
+
+.active:hover {
+    color: #026aa7;
+    font-weight: bold; 
 }
 
 main {

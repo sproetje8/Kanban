@@ -46,6 +46,7 @@ function createBoard() {
 
     addBoard(boardname, today);
     saveBoard(boardname, today);
+    adaptAddTaskLink();
 }
 
 function saveBoard(boardname, today) {  
@@ -55,6 +56,17 @@ function saveBoard(boardname, today) {
     }
     boards.push(obj);
     saveBoardsToStorage();
+}
+    
+function adaptAddTaskLink() {
+    var addNewTaskLink = document.getElementById('task-link');
+    if(boards.length > 0) {
+    addNewTaskLink.className = 'active';
+    addNewTaskLink.href = 'https://www.collinsdictionary.com/dictionary/english';
+    } else {
+    addNewTaskLink.className = 'inactive';
+    addNewTaskLink.href = '#';
+    }   
 }
 
 function saveBoardsToStorage() {
@@ -126,7 +138,7 @@ function addBoard(boardname, today){
     document.getElementById('boardList').appendChild(newboard);
 
     document.querySelector('.bg-modal').style.display = 'none';
-    
+   
     // function to delete a board from localStorage
     delbtn.addEventListener('click', function() {
         boards = boards.filter(function(board){
@@ -136,6 +148,7 @@ function addBoard(boardname, today){
         });
         newboard.parentNode.removeChild(newboard);
         saveBoardsToStorage();
+        adaptAddTaskLink();
     });
 }
 
@@ -144,13 +157,7 @@ function init() {
     boards.forEach(function (board) {
         addBoard(board.name, board.created);
     });
+    adaptAddTaskLink();
 }
 
 init();
-
-// var lastEdit = document.createElement('span');
-// lastEdit.className = 'dateLastEdit';  
-// lastEdit.innerHTML = 'Last edit : ' + today;  
-// boarddiv.appendChild(lastEdit);
-// obj.name = boardname;
-// var obj = {};
