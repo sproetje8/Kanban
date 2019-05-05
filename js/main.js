@@ -1,48 +1,53 @@
-document.getElementById('create-board').addEventListener('click', function(){
-    document.querySelector('.bg-modal').style.display = 'flex';
-    });
 
-document.querySelector('.close').addEventListener('click', function(){
-    document.querySelector('.bg-modal').style.display = 'none';
-});
 
-document.getElementById('create-new-board').addEventListener('click', checkInput);
 
-var boardname = '';
-function checkInput(){
-    boardname = document.getElementById('boardName').value;
-    if (boardname !== ''){
-    var regexp1 = new RegExp('^[A-Za-z\s]{3,}$');
-        if(!regexp1.test(boardname))
-        { 
-            alert('Alphabets only, min 3');
-        } else 
-        if(boards.some(function (el) { return el.name == boardname})) {
-            alert('This name already exists, enter another one.');
-        }
-        else {
-            createBoard();
-        }
-    }
-}
+
+
+// document.getElementById('create-board').addEventListener('click', function(){
+//     document.querySelector('.bg-modal').style.display = 'flex';
+//     });
+
+// document.querySelector('.close').addEventListener('click', function(){
+//     document.querySelector('.bg-modal').style.display = 'none';
+// });
+
+// document.getElementById('create-new-board').addEventListener('click', checkInput);
+
+// var boardname = '';
+// function checkInput(){
+//     boardname = document.getElementById('boardName').value;
+//     if (boardname !== ''){
+//     var regexp1 = new RegExp('^[A-Za-z\s]{3,}$');
+//         if(!regexp1.test(boardname))
+//         { 
+//             alert('Alphabets only, min 3');
+//         } else 
+//         if(boards.some(function (el) { return el.name == boardname})) {
+//             alert('This name already exists, enter another one.');
+//         }
+//         else {
+//             createBoard();
+//         }
+//     }
+// }
 
 var boards = [];
 function createBoard() {
-    // get user input for board name
-    boardname = document.getElementById('boardName').value;
+    // // get user input for board name
+    // boardname = document.getElementById('boardName').value;
 
-    // function for layout of current Date
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; 
-    var yyyy = today.getFullYear();
-    if(dd<10) {
-        dd = '0'+ dd;
-    } 
-    if(mm<10) {
-        mm ='0'+ mm;
-    } 
-    today = mm + '-' + dd + '-' + yyyy;
+    // // function for layout of current Date
+    // var today = new Date();
+    // var dd = today.getDate();
+    // var mm = today.getMonth()+1; 
+    // var yyyy = today.getFullYear();
+    // if(dd<10) {
+    //     dd = '0'+ dd;
+    // } 
+    // if(mm<10) {
+    //     mm ='0'+ mm;
+    // } 
+    // today = mm + '-' + dd + '-' + yyyy;
 
     addBoard(boardname, today);
     saveBoard(boardname, today);
@@ -69,9 +74,7 @@ function adaptAddTaskLink() {
     }   
 }
 
-function saveBoardsToStorage() {
-    localStorage.setItem('boards', JSON.stringify(boards));
-}
+
 
 function addBoard(boardname, today){
     // create tiles for new boards
@@ -140,16 +143,16 @@ function addBoard(boardname, today){
     document.querySelector('.bg-modal').style.display = 'none';
    
     // function to delete a board from localStorage
-    delbtn.addEventListener('click', function() {
-        boards = boards.filter(function(board){
-            if(board.name !== boardname) {
-                return true;
-            }
-        });
-        newboard.parentNode.removeChild(newboard);
-        saveBoardsToStorage();
-        adaptAddTaskLink();
-    });
+    // delbtn.addEventListener('click', function() {
+    //     boards = boards.filter(function(board){
+    //         if(board.name !== boardname) {
+    //             return true;
+    //         }
+    //     });
+    //     newboard.parentNode.removeChild(newboard);
+    //     saveBoardsToStorage();
+    //     adaptAddTaskLink();
+    // });
 }
 
 function init() {
