@@ -1,6 +1,6 @@
-function(boardname) {
-    alert('boardname');
-}
+// function(boardname) {
+//     alert('boardname');
+// }
 
 
 

@@ -1,3 +1,8 @@
+var boards;
+var input;
+
+window.onload = init();
+
 document.getElementById('create-board').addEventListener('click', function(){
     document.querySelector('.bg-modal').style.display = 'flex';
     document.getElementById('inputName').focus();
@@ -45,7 +50,6 @@ function checkInput(){
     }
 }
 
-var boards = [];
 function createBoard() {
     // get user input for board name
     boardname = document.getElementById('inputName').value;
@@ -71,7 +75,8 @@ function createBoard() {
 function saveBoard(boardname, today) {  
     var obj = {
         name: boardname,
-        created: today
+        created: today,
+        edit: today
     }
     boards.push(obj);
     saveBoardsToStorage();
@@ -81,11 +86,11 @@ function saveBoard(boardname, today) {
 function adaptAddTaskLink() {
     var addNewTaskLink = document.getElementById('task-link');
     if(boards.length > 0) {
-    addNewTaskLink.className = 'active';
-    addNewTaskLink.href = 'https://www.collinsdictionary.com/dictionary/english';
+        addNewTaskLink.className = 'active';
+        addNewTaskLink.href = 'https://www.collinsdictionary.com/dictionary/english';
     } else {
-    addNewTaskLink.className = 'inactive';
-    addNewTaskLink.href = '#';
+        addNewTaskLink.className = 'inactive';
+        addNewTaskLink.href = '#';
     }   
 }
 
@@ -141,6 +146,12 @@ function addBoard(boardname, today){
     createdOn.innerHTML = 'Created : ' + today;
     boarddiv.appendChild(createdOn);
 
+    // add date when board was last edited;
+    var editedOn = document.createElement('span');
+    editedOn.className = 'dateEdited';
+    editedOn.innerHTML = 'Last edit: ' + today;
+    boarddiv.appendChild(editedOn);             
+
     // create delete button
     var delbtn = document.createElement('button');
     delbtn.className = 'delete';
@@ -173,11 +184,11 @@ function addBoard(boardname, today){
 }
 
 function init() {
+    input = document.getElementById('inputName');
+
     boards = JSON.parse(localStorage.getItem('boards')) || [];
     boards.forEach(function (board) {
         addBoard(board.name, board.created);
     });
     adaptAddTaskLink();
 }
-
-init();

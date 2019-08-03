@@ -163,12 +163,16 @@ a, .dateCreated, .dateLastEdit {
     line-height: 16px;
     text-align: left;
     position: absolute;
-    bottom: 6px;
+    bottom: 18px;
     left: 10px;
 }
 
-.dateLastEdit {
-    bottom: 18px;
+.dateEdited {
+    font-size: 10px;
+    text-align: left;
+    left: 10px;
+    position: absolute;
+    bottom: -36px;
 }
 
 .delete {
