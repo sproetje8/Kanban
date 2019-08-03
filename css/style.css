@@ -2,7 +2,7 @@ body#home {
     background-color: #F7F8F8;
     font-family: Arial, Helvetica, sans-serif;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     min-height: 100%;
     padding: 0px;
     margin: 0;
@@ -200,13 +200,12 @@ a, .dateCreated, .dateLastEdit {
     z-index: 5;
 }
 
-footer {
-    clear: both;
-    position: absolute;
-    width: 100%;
+.footer {
+    position: fixed;
     height: 32px;
-    bottom: 0;
     right: 0;
+    bottom: 0;
+    left: 0;
     background-color: #82B4D2;
     color: #026aa7;
     text-align: center;

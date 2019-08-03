@@ -1,16 +1,35 @@
 document.getElementById('create-board').addEventListener('click', function(){
     document.querySelector('.bg-modal').style.display = 'flex';
+    document.getElementById('inputName').focus();
     });
 
 document.querySelector('.close').addEventListener('click', function(){
     document.querySelector('.bg-modal').style.display = 'none';
 });
 
+// Get the input field
+var input = document.getElementById('inputName');
+
+// Execute a function when the user presses Enter
+input.addEventListener('keyup', function(event) {
+    // 'Enter' is key number 13
+    if (event.keyCode === 13) {
+        // Cancel the default action
+        event.preventDefault();
+        // Trigger the button element with a click
+        checkInput();
+    }
+});
+
+document.getElementById('frm1').addEventListener('submit', function(event){
+    event.preventDefault()
+});
+
 document.getElementById('create-new-board').addEventListener('click', checkInput);
 
 var boardname = '';
 function checkInput(){
-    boardname = document.getElementById('boardName').value;
+    boardname = document.getElementById('inputName').value;
     if (boardname !== ''){
     var regexp1 = new RegExp('^[A-Za-z\s]{3,}$');
         if(!regexp1.test(boardname))
@@ -29,7 +48,7 @@ function checkInput(){
 var boards = [];
 function createBoard() {
     // get user input for board name
-    boardname = document.getElementById('boardName').value;
+    boardname = document.getElementById('inputName').value;
 
     // function for layout of current Date
     var today = new Date();
@@ -56,6 +75,7 @@ function saveBoard(boardname, today) {
     }
     boards.push(obj);
     saveBoardsToStorage();
+    document.getElementById('inputName').value = '';
 }
     
 function adaptAddTaskLink() {
