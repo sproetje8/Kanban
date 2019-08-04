@@ -132,14 +132,6 @@ function addBoard(boardname, today){
     namediv.id = 'boardlink-wrap-div';
     boarddiv.appendChild(namediv);
     
-    // create link to boardpage
-    var boardlink = document.createElement('a');
-    boardlink.className = 'brdlnk';
-    boardlink.id = boardname;
-    boardlink.innerHTML = boardname;
-    boardlink.setAttribute('href', 'board.html');
-    namediv.appendChild(boardlink);
-    
     // add date when board was created;
     var createdOn = document.createElement('span');
     createdOn.className = 'dateCreated';
@@ -151,6 +143,14 @@ function addBoard(boardname, today){
     editedOn.className = 'dateEdited';
     editedOn.innerHTML = 'Last edit: ' + today;
     boarddiv.appendChild(editedOn);             
+
+    // create link to boardpage
+    var boardlink = document.createElement('a');
+    boardlink.className = 'brdlnk';
+    boardlink.id = boardname;
+    boardlink.innerHTML = boardname;
+    boardlink.setAttribute('href', 'board.html');
+    namediv.appendChild(boardlink);
 
     // create delete button
     var delbtn = document.createElement('button');

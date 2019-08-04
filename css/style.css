@@ -116,10 +116,12 @@ button#create-board:hover{
 }
 
 div.created-board {
-    background-color: #026aa7 ;
+    background-color: #026aa7;
     color: #F7F8F8;
     font-weight: bold;
     line-height: 96px;
+    width: 160px;
+    height: 96px;
     border: 2% solid #F7F8F8;
     border-radius: 4px;
     text-align: center;
@@ -158,21 +160,18 @@ a, .dateCreated, .dateLastEdit {
     opacity: 0.7;
 }
 
-.dateCreated, .dateLastEdit {
+.dateCreated, .dateEdited {
+    height: 16px;
     font-size: 10px;
     line-height: 16px;
     text-align: left;
     position: absolute;
-    bottom: 18px;
+    bottom: 20px;
     left: 10px;
 }
 
 .dateEdited {
-    font-size: 10px;
-    text-align: left;
-    left: 10px;
-    position: absolute;
-    bottom: -36px;
+    bottom: 6px;
 }
 
 .delete {
