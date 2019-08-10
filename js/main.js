@@ -1,6 +1,7 @@
 var boards;
 var input;
 
+
 window.onload = init();
 
 document.getElementById('create-board').addEventListener('click', function(){
@@ -13,7 +14,7 @@ document.querySelector('.close').addEventListener('click', function(){
 });
 
 // Get the input field
-var input = document.getElementById('inputName');
+input = document.getElementById('inputName');
 
 // Execute a function when the user presses Enter
 input.addEventListener('keyup', function(event) {
@@ -54,29 +55,18 @@ function createBoard() {
     // get user input for board name
     boardname = document.getElementById('inputName').value;
 
-    // function for layout of current Date
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; 
-    var yyyy = today.getFullYear();
-    if(dd<10) {
-        dd = '0'+ dd;
-    } 
-    if(mm<10) {
-        mm ='0'+ mm;
-    } 
-    today = mm + '-' + dd + '-' + yyyy;
-
-    addBoard(boardname, today);
-    saveBoard(boardname, today);
+    // function to get current Date
+    var date = new Date.setTime();
+    
+    saveBoard(boardname, date);
     adaptAddTaskLink();
 }
 
-function saveBoard(boardname, today) {  
+function saveBoard(boardname, date) {  
     var obj = {
         name: boardname,
-        created: today,
-        edit: today
+        created: date,
+        edit: date
     }
     boards.push(obj);
     saveBoardsToStorage();
@@ -84,13 +74,13 @@ function saveBoard(boardname, today) {
 }
     
 function adaptAddTaskLink() {
-    var addNewTaskLink = document.getElementById('task-link');
+    var taskLinkActivation = document.getElementById('task-link');
     if(boards.length > 0) {
-        addNewTaskLink.className = 'active';
-        addNewTaskLink.href = 'https://www.collinsdictionary.com/dictionary/english';
+        taskLinkActivation.className = 'active';
+        taskLinkActivation.href = '#';
     } else {
-        addNewTaskLink.className = 'inactive';
-        addNewTaskLink.href = '#';
+        taskLinkActivation.className = 'inactive';
+        taskLinkActivation.href = '#';
     }   
 }
 
@@ -184,11 +174,35 @@ function addBoard(boardname, today){
 }
 
 function init() {
-    input = document.getElementById('inputName');
+    // input = document.getElementById('inputName');
 
     boards = JSON.parse(localStorage.getItem('boards')) || [];
+    boards = boards.sort(function(a,b) {
+        a = a.edit;
+        b = b.edit;
+
+        return a>b ? -1 : a<b ? 1 : 0;
+    });
+
+    localStorage.setItem('boards', JSON.stringify(boards));
+
     boards.forEach(function (board) {
-        addBoard(board.name, board.created);
+        var 
+        var dd = date.getDate(board.edit);
+        var mm = date.getMonth()+1; 
+        var yyyy = date.getFullYear();
+
+        if(dd<10) {
+            dd = '0'+ dd;
+        } 
+        if(mm<10) {
+            mm ='0'+ mm;
+        } 
+        today = mm + '-' + dd + '-' + yyyy;
+
+    addBoard(boardname, today);
+        
+        addBoard(board.name, board.created, board.edit);
     });
     adaptAddTaskLink();
 }

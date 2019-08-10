@@ -1,45 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
     <head >
-        <title>Board Name</title>
+        <title>Board Page</title>
         <meta charset="utf-8">
         <link type="text/css" rel="stylesheet" href="css/board.css">
     </head>
     <body id="boardpage">
-        <header id="header">
-            <div class="boardpage-head">
+        <div class="header" id="board-page-header">
+            <div class="board-page-head">
                 <h1>Board Name</h1>
             </div>
             <div class="filters">
                 <div class="filtername">
                     <span id="quick-filters">QUICK FILTERS:</span>
                 </div>
-                <nav>
-                    <ul>
-                        <li class="nav-panel">Only my partners</li>
-                        <li class="nav-panel">Critical partners</li>
-                        <li class="nav-panel">Recently updated</li>
-                    </ul>
-                </nav>
+                <div id="navigation">
+                    <nav>
+                        <ul>
+                            <li class="nav-panel">Only my issues</li>
+                            <li class="nav-panel">Recently updated</li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
-        </header>
-        <section id="board-wrap">
-            <div id="board-overview">
-                <ul id="columns">
-                    <ul class="to-do" id="col-1">
-                        <li class="to-do col-head">To do</li>
-                    </ul>
-                    <ul class="in-progress" id="col-2">
-                        <li class="in-progress col-head">In progress</li>                    
-                    </ul>
-                    <ul class="done" id="col-3">
-                        <li class="done col-head">Done</li>
-                    </ul>
-                </ul>
+        </div>
+        <div class="content">
+            <div class="board-wrapper">
+                <div class="list-wrapper" id="list-toDo">
+                    <div class="list-header" id="toDo">
+                        <h2>To Do</h2>
+                        <div class="list-task-wrapper">
+                            <div class="list-task" id="toDo-first"></div>
+                            <div class="list-task" id="toDo-second"></div>
+                            <div class="list-task" id="toDo-third"></div>
+                            <div class="list-task" id="toDo-fourth"></div>
+                            <div class="list-task" id="toDo-fifth"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-wrapper" id="list-inProgress">
+                    <div class="list-header" id="inProgress">
+                        <h2>In Progress</h2>
+                        <div class="list-task-wrapper">
+                            <div class="list-task" id="inProgress-first"></div>
+                            <div class="list-task" id="inProgress-second"></div>
+                            <div class="list-task" id="inProgress-third"></div>
+                            <div class="list-task" id="inProgress-fourth"></div>
+                            <div class="list-task" id="inProgress-fifth"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-wrapper" id="list-done">
+                    <div class="list-header" id="done">
+                        <h2>Done</h2>
+                        <div class="list-task-wrapper">
+                            <div class="list-task" id="done-first"></div>
+                            <div class="list-task" id="done-second"></div>
+                            <div class="list-task" id="done-third"></div>
+                            <div class="list-task" id="done-fourth"></div>
+                            <div class="list-task" id="done-fifth"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="task-info">
-                Task Information
-            </div>
-        </section>
+        </div>
+        <script src="js/board.js"></script>
     </body>
 </html>
