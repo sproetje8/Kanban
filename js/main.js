@@ -14,10 +14,7 @@ document.querySelector('.close').addEventListener('click', function(){
 });
 
 // Get the input field
-input = document.getElementById('inputName');
-
-// Execute a function when the user presses Enter
-input.addEventListener('keyup', function(event) {
+document.getElementById('inputName').addEventListener('keypress', function(event) {
     // 'Enter' is key number 13
     if (event.keyCode === 13) {
         // Cancel the default action
@@ -27,25 +24,29 @@ input.addEventListener('keyup', function(event) {
     }
 });
 
+// check input when 'create' button clicked
+document.getElementById('create-new-board').addEventListener('click', checkInput);
+
+// remove default function of form
 document.getElementById('frm1').addEventListener('submit', function(event){
-    event.preventDefault()
+    event.preventDefault();
 });
 
-document.getElementById('create-new-board').addEventListener('click', checkInput);
 
 var boardname = '';
 function checkInput(){
     boardname = document.getElementById('inputName').value;
     if (boardname !== ''){
     var regexp1 = new RegExp('^[A-Za-z\s]{3,}$');
-        if(!regexp1.test(boardname))
+        if (!regexp1.test(boardname))
         { 
             alert('Alphabets only, min 3');
-        } else 
-        if(boards.some(function (el) { return el.name == boardname})) {
+        } else
+        if (boards.some(function (el) { return el.name == boardname})) {
             alert('This name already exists, enter another one.');
         }
         else {
+            document.querySelector('.bg-modal').style.display = 'none';
             createBoard();
         }
     }
@@ -56,7 +57,7 @@ function createBoard() {
     boardname = document.getElementById('inputName').value;
 
     // function to get current Date
-    var date = new Date.setTime();
+    var date = Date.now();
     
     saveBoard(boardname, date);
     adaptAddTaskLink();
@@ -88,7 +89,7 @@ function saveBoardsToStorage() {
     localStorage.setItem('boards', JSON.stringify(boards));
 }
 
-function addBoard(boardname, today){
+function addBoard(boardname, creationDate, lastEditDate){
     // create tiles for new boards
     var newboard = document.createElement('li');
     newboard.className = 'board-tile';
@@ -125,13 +126,13 @@ function addBoard(boardname, today){
     // add date when board was created;
     var createdOn = document.createElement('span');
     createdOn.className = 'dateCreated';
-    createdOn.innerHTML = 'Created : ' + today;
+    createdOn.innerHTML = 'Created : ' + creationDate;
     boarddiv.appendChild(createdOn);
 
     // add date when board was last edited;
     var editedOn = document.createElement('span');
     editedOn.className = 'dateEdited';
-    editedOn.innerHTML = 'Last edit: ' + today;
+    editedOn.innerHTML = 'Last edit: ' + lastEditDate;
     boarddiv.appendChild(editedOn);             
 
     // create link to boardpage
@@ -174,9 +175,7 @@ function addBoard(boardname, today){
 }
 
 function init() {
-    // input = document.getElementById('inputName');
-
-    boards = JSON.parse(localStorage.getItem('boards')) || [];
+    boards = JSON.parse(localStorage.getItem('boards')) || []; 
     boards = boards.sort(function(a,b) {
         a = a.edit;
         b = b.edit;
@@ -187,10 +186,11 @@ function init() {
     localStorage.setItem('boards', JSON.stringify(boards));
 
     boards.forEach(function (board) {
-        var 
-        var dd = date.getDate(board.edit);
-        var mm = date.getMonth()+1; 
-        var yyyy = date.getFullYear();
+        // set up layout for date of creation
+        var createdMillisec = new Date(Date.now(board.created));
+        var dd = createdMillisec.getDate();
+        var mm = createdMillisec.getMonth()+1; 
+        var yyyy = createdMillisec.getFullYear();
 
         if(dd<10) {
             dd = '0'+ dd;
@@ -198,11 +198,25 @@ function init() {
         if(mm<10) {
             mm ='0'+ mm;
         } 
-        today = mm + '-' + dd + '-' + yyyy;
+        creationDate = mm + '-' + dd + '-' + yyyy;
 
-    addBoard(boardname, today);
+        // set up layout for date of last edit
+        var lastEditMillisec = new Date(Date.now(board.created));
+        var dd = lastEditMillisec.getDate(board.edit);
+        var mm = lastEditMillisec.getMonth()+1; 
+        var yyyy = lastEditMillisec.getFullYear();
+
+        if(dd<10) {
+            dd = '0'+ dd;
+        } 
+        if(mm<10) {
+            mm ='0'+ mm;
+        } 
+        lastEditDate = mm + '-' + dd + '-' + yyyy;
+
+    addBoard(boardname, creationDate, lastEditDate);
         
-        addBoard(board.name, board.created, board.edit);
+        // addBoard(board.name, board.created, board.edit);
     });
     adaptAddTaskLink();
 }
