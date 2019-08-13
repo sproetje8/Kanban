@@ -68,10 +68,10 @@ function saveBoard(boardname, date) {
         name: boardname,
         created: date,
         edit: date
-    }
+    };
     boards.push(obj);
     saveBoardsToStorage();
-    document.getElementById('inputName').value = '';
+    // document.getElementById('inputName').value = '';
 }
     
 function adaptAddTaskLink() {
@@ -89,7 +89,7 @@ function saveBoardsToStorage() {
     localStorage.setItem('boards', JSON.stringify(boards));
 }
 
-function addBoard(boardname, creationDate, lastEditDate){
+function addBoardToHomePage(boardname, creationDate, lastEditDate){
     // create tiles for new boards
     var newboard = document.createElement('li');
     newboard.className = 'board-tile';
@@ -135,7 +135,7 @@ function addBoard(boardname, creationDate, lastEditDate){
     editedOn.innerHTML = 'Last edit: ' + lastEditDate;
     boarddiv.appendChild(editedOn);             
 
-    // create link to boardpage
+    // create link to board page
     var boardlink = document.createElement('a');
     boardlink.className = 'brdlnk';
     boardlink.id = boardname;
@@ -175,7 +175,8 @@ function addBoard(boardname, creationDate, lastEditDate){
 }
 
 function init() {
-    boards = JSON.parse(localStorage.getItem('boards')) || []; 
+  input = document.getElementById('inputName');
+  boards = JSON.parse(localStorage.getItem('boards')) || [];
     boards = boards.sort(function(a,b) {
         a = a.edit;
         b = b.edit;
@@ -189,7 +190,7 @@ function init() {
         // set up layout for date of creation
         var createdMillisec = new Date(Date.now(board.created));
         var dd = createdMillisec.getDate();
-        var mm = createdMillisec.getMonth()+1; 
+        var mm = createdMillisec.getMonth() + 1;
         var yyyy = createdMillisec.getFullYear();
 
         if(dd<10) {
@@ -201,8 +202,8 @@ function init() {
         creationDate = mm + '-' + dd + '-' + yyyy;
 
         // set up layout for date of last edit
-        var lastEditMillisec = new Date(Date.now(board.created));
-        var dd = lastEditMillisec.getDate(board.edit);
+        var lastEditMillisec = new Date(Date.now(board.edit));
+        var dd = lastEditMillisec.getDate();
         var mm = lastEditMillisec.getMonth()+1; 
         var yyyy = lastEditMillisec.getFullYear();
 
@@ -214,9 +215,7 @@ function init() {
         } 
         lastEditDate = mm + '-' + dd + '-' + yyyy;
 
-    addBoard(boardname, creationDate, lastEditDate);
-        
-        // addBoard(board.name, board.created, board.edit);
+        addBoardToHomePage(board.name, creationDate, lastEditDate);
     });
     adaptAddTaskLink();
 }
