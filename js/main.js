@@ -1,19 +1,15 @@
 var boards;
-// var input;
 
 window.onload = init();
 
 function init() {
-    // input = document.getElementById('inputName');
     boards = JSON.parse(localStorage.getItem('boards')) || [];
     boards = boards.sort(function (a, b) {
-        a = a.edit;
-        b = b.edit;
-
-        return a > b ? 1 : a < b ? -1 : 0;
+        c = a.edit;
+        d = b.edit;
+        return c > d ? 1 : c < d ? -1 : 0;
     });
-    addBoardToHomePage(boards);
-    // localStorage.setItem('boards', JSON.stringify(boards));
+    addBoardsToHomePage(boards);
     adaptAddTaskLink();
 }
 
@@ -24,17 +20,6 @@ document.getElementById('create-board').addEventListener('click', function () {
 
 document.querySelector('.close').addEventListener('click', function () {
     document.querySelector('.bg-modal').style.display = 'none';
-});
-
-// Get the input field
-document.querySelector('#inputName').addEventListener('keypress', function (event) {
-    // 'Enter' is key number 13
-    if (event.key === 13) {
-        // Cancel the default action
-        event.preventDefault();
-        // Trigger the button element with a click
-        checkInput();
-    }
 });
 
 // check input when 'create' button clicked
@@ -116,7 +101,7 @@ function composeBoardObject(boardName, date, creationDate, lastEditDate) {
         edit: lastEditDate
     };
     boards.push(obj);
-    addBoardToHomePage(boards);
+    addBoardsToHomePage(boards);
 }
 
 function adaptAddTaskLink() {
@@ -130,12 +115,7 @@ function adaptAddTaskLink() {
     }
 }
 
-// function saveBoardsToStorage() {
-//     localStorage.setItem('boards', JSON.stringify(boards));
-//     addBoardToHomePage(boards);
-// }
-
-function addBoardToHomePage(boards) {
+function addBoardsToHomePage(boards) {
     boards.forEach( function (elem) {
     // create tiles for new boards
     var newboard = document.createElement('li');
