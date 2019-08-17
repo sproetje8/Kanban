@@ -39,13 +39,19 @@ document.querySelector('#inputName').addEventListener('keypress', function (even
 
 // check input when 'create' button clicked
 document.querySelector('#create-new-board').addEventListener('click', checkInput);
+// check input when Enter key is clicked
+document.querySelector('#inputName').addEventListener('keyup', function(e) {
+    if (e.code === "Enter") {
+        e.preventDefault();
+        document.querySelector('#create-new-board').click();
+    }
+});
 
 // remove default function of form
 document.getElementById('frm1').addEventListener('submit', function (event) {
     event.preventDefault();
 });
 
-// var boardName = '';
 var boardName = '';
 
 function checkInput() {
@@ -110,7 +116,6 @@ function composeBoardObject(boardName, date, creationDate, lastEditDate) {
         edit: lastEditDate
     };
     boards.push(obj);
-    // saveBoardsToStorage(boards);
     addBoardToHomePage(boards);
 }
 
