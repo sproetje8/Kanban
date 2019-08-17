@@ -26,6 +26,7 @@ body#home {
     font-style: italic;
     text-align: center;
     vertical-align: middle;
+    z-index: 5;
 }
 
 span.header-logo {
@@ -74,6 +75,7 @@ main {
     position: relative;
     top: 40px;
     padding: 0 150px;
+    z-index: 1;
 }
 
 ul#boardList {
@@ -213,6 +215,7 @@ a, .dateCreated, .dateLastEdit {
     color: #026aa7;
     text-align: center;
     line-height: 32px;
+    z-index: 5;
 }
 
 .bg-modal {

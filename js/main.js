@@ -4,12 +4,16 @@ window.onload = init();
 
 function init() {
     boards = JSON.parse(localStorage.getItem('boards')) || [];
+    sortAndShow();
+}
+
+function sortAndShow() {
     boards = boards.sort(function (a, b) {
-        c = a.edit;
-        d = b.edit;
-        return c > d ? 1 : c < d ? -1 : 0;
+        var c = a.editMilliseconds;
+        var d = b.editMilliseconds;
+        return c > d ? -1 : c < d ? 1 : 0;
     });
-    addBoardsToHomePage(boards);
+    addBoardsToHomePage();
     adaptAddTaskLink();
 }
 
@@ -51,18 +55,16 @@ function checkInput() {
             alert('This name already exists, enter another one.');
         } else {
             document.querySelector('.bg-modal').style.display = 'none';
-            createBoard();
+            createBoard(boardName);
         }
     }
 }
 
-function createBoard() {
-    // get user input for board name
-    boardName = document.getElementById('inputName').value;
-
+function createBoard(boardName) {
     // function to get current Date
     var date = Date.now();
-    var createdMillisec = new Date(Date.now(date));
+    var createdMillisec = new Date(date);
+    var lastEditMillisec = date;
     var dd = createdMillisec.getDate();
     var mm = createdMillisec.getMonth() + 1;
     var yyyy = createdMillisec.getFullYear();
@@ -74,34 +76,26 @@ function createBoard() {
         mm = '0' + mm;
     }
     creationDate = mm + '-' + dd + '-' + yyyy;
+    lastEditDate = creationDate;
 
-    // set up layout for date of last edit
-    var lastEditMillisec = new Date(Date.now(date));
-    var dd = lastEditMillisec.getDate();
-    var mm = lastEditMillisec.getMonth() + 1;
-    var yyyy = lastEditMillisec.getFullYear();
-
-    if (dd < 10) {
-        dd = '0' + dd;
-    }
-    if (mm < 10) {
-        mm = '0' + mm;
-    }
-    lastEditDate = mm + '-' + dd + '-' + yyyy;
-
-    composeBoardObject(boardName, date, creationDate, lastEditDate);
-    adaptAddTaskLink();
+    composeBoardObject(boardName, createdMillisec, lastEditMillisec, creationDate, lastEditDate);
 }
 
-function composeBoardObject(boardName, date, creationDate, lastEditDate) {
+function composeBoardObject(boardName, createdMillisec, lastEditMillisec, creationDate, lastEditDate) {
     var obj = {
         name: boardName,
-        dateMilliseconds: date,
+        createdMilliseconds: createdMillisec,
+        editMilliseconds: lastEditMillisec,
         created: creationDate,
         edit: lastEditDate
     };
     boards.push(obj);
-    addBoardsToHomePage(boards);
+    localStorage.setItem('boards', JSON.stringify(boards));
+    var element = document.querySelectorAll(".board-tile");
+    Array.prototype.forEach.call(element,  function(node){
+        node.parentNode.removeChild(node)
+    });
+    sortAndShow();
 }
 
 function adaptAddTaskLink() {
@@ -115,8 +109,7 @@ function adaptAddTaskLink() {
     }
 }
 
-function addBoardsToHomePage(boards) {
-    boards.forEach( function (elem) {
+function addBoard(elem) {
     // create tiles for new boards
     var newboard = document.createElement('li');
     newboard.className = 'board-tile';
@@ -187,5 +180,8 @@ function addBoardsToHomePage(boards) {
     document.getElementById('boardList').appendChild(newboard);
     document.getElementById('inputName').value = '';
     document.querySelector('.bg-modal').style.display = 'none';
-    });
+}
+
+function addBoardsToHomePage() {
+    boards.forEach(addBoard);
 }
