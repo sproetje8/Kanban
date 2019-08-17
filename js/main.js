@@ -1,8 +1,21 @@
 var boards;
-var input;
-
+// var input;
 
 window.onload = init();
+
+function init() {
+    // input = document.getElementById('inputName');
+    boards = JSON.parse(localStorage.getItem('boards')) || [];
+    boards = boards.sort(function (a, b) {
+        a = a.edit;
+        b = b.edit;
+
+        return a > b ? 1 : a < b ? -1 : 0;
+    });
+    addBoardToHomePage(boards);
+    // localStorage.setItem('boards', JSON.stringify(boards));
+    adaptAddTaskLink();
+}
 
 document.getElementById('create-board').addEventListener('click', function () {
     document.querySelector('.bg-modal').style.display = 'flex';
@@ -14,9 +27,9 @@ document.querySelector('.close').addEventListener('click', function () {
 });
 
 // Get the input field
-document.getElementById('inputName').addEventListener('keypress', function (event) {
+document.querySelector('#inputName').addEventListener('keypress', function (event) {
     // 'Enter' is key number 13
-    if (event.keyCode === 13) {
+    if (event.key === 13) {
         // Cancel the default action
         event.preventDefault();
         // Trigger the button element with a click
@@ -25,24 +38,24 @@ document.getElementById('inputName').addEventListener('keypress', function (even
 });
 
 // check input when 'create' button clicked
-document.getElementById('create-new-board').addEventListener('click', checkInput);
+document.querySelector('#create-new-board').addEventListener('click', checkInput);
 
 // remove default function of form
 document.getElementById('frm1').addEventListener('submit', function (event) {
     event.preventDefault();
 });
 
-
-var boardname = '';
+// var boardName = '';
+var boardName = '';
 
 function checkInput() {
-    boardname = document.getElementById('inputName').value;
-    if (boardname !== '') {
+    boardName = document.getElementById('inputName').value;
+    if (boardName !== '') {
         var regexp1 = new RegExp('^[A-Za-z\s]{3,}$');
-        if (!regexp1.test(boardname)) {
+        if (!regexp1.test(boardName)) {
             alert('Alphabets only, min 3');
         } else if (boards.some(function (el) {
-            return el.name == boardname
+            return el.name == boardName
         })) {
             alert('This name already exists, enter another one.');
         } else {
@@ -54,24 +67,51 @@ function checkInput() {
 
 function createBoard() {
     // get user input for board name
-    boardname = document.getElementById('inputName').value;
+    boardName = document.getElementById('inputName').value;
 
     // function to get current Date
     var date = Date.now();
+    var createdMillisec = new Date(Date.now(date));
+    var dd = createdMillisec.getDate();
+    var mm = createdMillisec.getMonth() + 1;
+    var yyyy = createdMillisec.getFullYear();
 
-    saveBoard(boardname, date);
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+    creationDate = mm + '-' + dd + '-' + yyyy;
+
+    // set up layout for date of last edit
+    var lastEditMillisec = new Date(Date.now(date));
+    var dd = lastEditMillisec.getDate();
+    var mm = lastEditMillisec.getMonth() + 1;
+    var yyyy = lastEditMillisec.getFullYear();
+
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+    lastEditDate = mm + '-' + dd + '-' + yyyy;
+
+    composeBoardObject(boardName, date, creationDate, lastEditDate);
     adaptAddTaskLink();
 }
 
-function saveBoard(boardname, date) {
+function composeBoardObject(boardName, date, creationDate, lastEditDate) {
     var obj = {
-        name: boardname,
-        created: date,
-        edit: date
+        name: boardName,
+        dateMilliseconds: date,
+        created: creationDate,
+        edit: lastEditDate
     };
     boards.push(obj);
-    saveBoardsToStorage();
-    // document.getElementById('inputName').value = '';
+    // saveBoardsToStorage(boards);
+    addBoardToHomePage(boards);
 }
 
 function adaptAddTaskLink() {
@@ -85,11 +125,13 @@ function adaptAddTaskLink() {
     }
 }
 
-function saveBoardsToStorage() {
-    localStorage.setItem('boards', JSON.stringify(boards));
-}
+// function saveBoardsToStorage() {
+//     localStorage.setItem('boards', JSON.stringify(boards));
+//     addBoardToHomePage(boards);
+// }
 
-function addBoardToHomePage(boardname, creationDate, lastEditDate) {
+function addBoardToHomePage(boards) {
+    boards.forEach( function (elem) {
     // create tiles for new boards
     var newboard = document.createElement('li');
     newboard.className = 'board-tile';
@@ -126,20 +168,20 @@ function addBoardToHomePage(boardname, creationDate, lastEditDate) {
     // add date when board was created;
     var createdOn = document.createElement('span');
     createdOn.className = 'dateCreated';
-    createdOn.innerHTML = 'Created : ' + creationDate;
+    createdOn.innerHTML = 'Created : ' + elem.created;
     boarddiv.appendChild(createdOn);
 
     // add date when board was last edited;
     var editedOn = document.createElement('span');
     editedOn.className = 'dateEdited';
-    editedOn.innerHTML = 'Last edit: ' + lastEditDate;
+    editedOn.innerHTML = 'Last edit: ' + elem.edit;
     boarddiv.appendChild(editedOn);
 
     // create link to board page
     var boardlink = document.createElement('a');
     boardlink.className = 'brdlnk';
-    boardlink.id = boardname;
-    boardlink.innerHTML = boardname;
+    boardlink.id = boardName;
+    boardlink.innerHTML = elem.name;
     boardlink.setAttribute('href', 'board.html');
     namediv.appendChild(boardlink);
 
@@ -158,65 +200,7 @@ function addBoardToHomePage(boardname, creationDate, lastEditDate) {
     delbtn.appendChild(delicon);
 
     document.getElementById('boardList').appendChild(newboard);
-
+    document.getElementById('inputName').value = '';
     document.querySelector('.bg-modal').style.display = 'none';
-
-    // function to delete a board from localStorage
-}
-
-document.getElementById('del-board').addEventListener('click', function deleteBoard() {
-    boards = boards.filter(function (board) {
-        if (board.name !== boardname) {
-            return true;
-        }
-    newboard.parentNode.removeChild(newboard);
-    saveBoardsToStorage();
-    adaptAddTaskLink();
     });
-});
-
-function init() {
-    input = document.getElementById('inputName');
-    boards = JSON.parse(localStorage.getItem('boards')) || [];
-    boards = boards.sort(function (a, b) {
-        a = a.edit;
-        b = b.edit;
-
-        return a > b ? -1 : a < b ? 1 : 0;
-    });
-
-    localStorage.setItem('boards', JSON.stringify(boards));
-
-    boards.forEach(function (board) {
-        // set up layout for date of creation
-        var createdMillisec = new Date(Date.now(board.created));
-        var dd = createdMillisec.getDate();
-        var mm = createdMillisec.getMonth() + 1;
-        var yyyy = createdMillisec.getFullYear();
-
-        if (dd < 10) {
-            dd = '0' + dd;
-        }
-        if (mm < 10) {
-            mm = '0' + mm;
-        }
-        creationDate = mm + '-' + dd + '-' + yyyy;
-
-        // set up layout for date of last edit
-        var lastEditMillisec = new Date(Date.now(board.edit));
-        var dd = lastEditMillisec.getDate();
-        var mm = lastEditMillisec.getMonth() + 1;
-        var yyyy = lastEditMillisec.getFullYear();
-
-        if (dd < 10) {
-            dd = '0' + dd;
-        }
-        if (mm < 10) {
-            mm = '0' + mm;
-        }
-        lastEditDate = mm + '-' + dd + '-' + yyyy;
-
-        addBoardToHomePage(board.name, creationDate, lastEditDate);
-    });
-    adaptAddTaskLink();
 }
