@@ -124,27 +124,31 @@ function addBoard(board) {
 
     // create div for link
     var settingsdiv = document.createElement('div');
+    var settingsDivId = board.name + '-settings-div';
     settingsdiv.classname = 'settings-div';
-    settingsdiv.id = 'board-settings-div';
+    settingsdiv.id = settingsDivId;
     boarddiv.appendChild(settingsdiv);
 
     // create link to settings
     var settingslink = document.createElement('a');
+    var settingsLinkId = board.name + '-settings-link';
     settingslink.className = 'settings-link';
-    settingslink.id = 'board-settings-link';
-    settingslink.setAttribute('href', 'board.html');
+    settingslink.id = settingsLinkId;
+    settingslink.setAttribute('href', 'settings.html');
     settingsdiv.appendChild(settingslink);
 
     // create settings icon
     var settingsicon = document.createElement('i');
+    var settingsiconId = board.name + 'settings-icon';
     settingsicon.setAttribute('class', 'fas fa-cog');
-    settingsicon.id = 'board-settings';
+    settingsicon.id = settingsiconId;
     settingslink.appendChild(settingsicon);
 
     // create div for link to board page
     var namediv = document.createElement('div');
+    var nameDivId = board.name + 'boardlink-wrap-div';
     namediv.classname = 'boardlink-wrap';
-    namediv.id = 'boardlink-wrap-div';
+    namediv.id = nameDivId;
     boarddiv.appendChild(namediv);
 
     // add date when board was created;

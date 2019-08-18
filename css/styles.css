@@ -50,11 +50,12 @@ button#create-task {
     color: #777777;
     border-radius: 5px;
     height: 26px;
-    /* cursor: none; */
 }
+
 button#create-task>a {
     z-index: 5;
 }
+
 a.inactive {
     text-decoration-line: none;
     color: #F7F8F8;
@@ -68,7 +69,7 @@ a.active {
 
 .active:hover {
     color: #026aa7;
-    font-weight: bold; 
+    font-weight: bold;
 }
 
 main {
@@ -95,7 +96,6 @@ li.board-tile {
     margin: 14px;
     vertical-align: middle;
 }
-
 
 button#create-board, button#create-board:focus {
     background-color: #e6e9ea;
@@ -129,11 +129,18 @@ div.created-board {
     text-align: center;
     position: relative;
 }
-#board-settings-div {
+
+.brdlnk:hover {
+    color: #82B4D2;
+    cursor: pointer;
+}
+
+.settings-div {
     z-index: 2;
 }
 
-#board-settings {
+.settings-link {
+    position: relative;
     background-color: white;
     color: black;
     position: absolute;
@@ -146,20 +153,15 @@ div.created-board {
     z-index: 5;
 }
 
-/* .boarddiv-wrap {
-    width: 160px;
-    height: 36px;
-    line-height: 36px; 
-} */
-
+.fa-cog:before {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}
 
 a, .dateCreated, .dateLastEdit {
     color:  #F7F8F8;
     display: block;
-}
-
-#brdId:hover {
-    opacity: 0.7;
 }
 
 .dateCreated, .dateEdited {
