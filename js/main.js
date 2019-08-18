@@ -106,7 +106,7 @@ function adaptAddTaskLink() {
     var taskLinkActivation = document.getElementById('task-link');
     if (boards.length > 0) {
         taskLinkActivation.className = 'active';
-        taskLinkActivation.href = '#';
+        taskLinkActivation.href = 'newtask.html';
     } else {
         taskLinkActivation.className = 'inactive';
         taskLinkActivation.href = '#';
