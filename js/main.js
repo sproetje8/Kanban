@@ -91,11 +91,15 @@ function composeBoardObject(boardName, createdMillisec, lastEditMillisec, creati
     };
     boards.push(obj);
     localStorage.setItem('boards', JSON.stringify(boards));
+    clearHomePage();
+    sortAndShow();
+}
+
+function clearHomePage(){
     var element = document.querySelectorAll(".board-tile");
     Array.prototype.forEach.call(element,  function(node){
         node.parentNode.removeChild(node)
     });
-    sortAndShow();
 }
 
 function adaptAddTaskLink() {
@@ -109,7 +113,7 @@ function adaptAddTaskLink() {
     }
 }
 
-function addBoard(elem) {
+function addBoard(board) {
     // create tiles for new boards
     var newboard = document.createElement('li');
     newboard.className = 'board-tile';
@@ -137,7 +141,7 @@ function addBoard(elem) {
     settingsicon.id = 'board-settings';
     settingslink.appendChild(settingsicon);
 
-    // create div for link to boardpage
+    // create div for link to board page
     var namediv = document.createElement('div');
     namediv.classname = 'boardlink-wrap';
     namediv.id = 'boardlink-wrap-div';
@@ -146,27 +150,28 @@ function addBoard(elem) {
     // add date when board was created;
     var createdOn = document.createElement('span');
     createdOn.className = 'dateCreated';
-    createdOn.innerHTML = 'Created : ' + elem.created;
+    createdOn.innerHTML = 'Created : ' + board.created;
     boarddiv.appendChild(createdOn);
 
     // add date when board was last edited;
     var editedOn = document.createElement('span');
     editedOn.className = 'dateEdited';
-    editedOn.innerHTML = 'Last edit: ' + elem.edit;
+    editedOn.innerHTML = 'Last edit: ' + board.edit;
     boarddiv.appendChild(editedOn);
 
     // create link to board page
     var boardlink = document.createElement('a');
     boardlink.className = 'brdlnk';
-    boardlink.id = boardName;
-    boardlink.innerHTML = elem.name;
+    boardlink.id = board.name;
+    boardlink.innerHTML = board.name;
     boardlink.setAttribute('href', 'board.html');
     namediv.appendChild(boardlink);
 
     // create delete button
     var delbtn = document.createElement('button');
+    var delbtnId = 'del' + board.name;
     delbtn.className = 'delete';
-    delbtn.id = 'del-board';
+    delbtn.id = delbtnId;
     delbtn.setAttribute('type', 'button');
     delbtn.setAttribute('name', 'delete');
     boarddiv.appendChild(delbtn);
@@ -180,6 +185,14 @@ function addBoard(elem) {
     document.getElementById('boardList').appendChild(newboard);
     document.getElementById('inputName').value = '';
     document.querySelector('.bg-modal').style.display = 'none';
+
+    delbtn.addEventListener('click', function () {
+        var index = boards.indexOf(board);
+        boards.splice(index, 1);
+        localStorage.setItem('boards', JSON.stringify(boards));
+        clearHomePage();
+        sortAndShow();
+    });
 }
 
 function addBoardsToHomePage() {
