@@ -8,13 +8,6 @@ html, body {
     background-color: #F7F8F8;
 }
 
-div {
-    display: block;
-    position: relative;
-    top: 0px;
-    left: 0px;
-}
-
 .header {
     position: fixed;
 }
@@ -89,16 +82,45 @@ ul {
     background-color: #dfe1e6;
 }
 
+ul#list-task-wrapper {
+    height: 400px;
+}
+
+li {
+    display: inline-block;
+}
+
+.list-header {
+    position: relative;
+    top: 0;
+    left: 0;
+}
 .task-count {
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+    position: absolute;
+    top: 0px;
+    left:3px;
     width: 15px;
-    height: 100%;
-    background-color: red;
-    z-index: 2;
+    height: 20px;
+    padding: 3px;
+    background-color: #dfe1e6;
+    text-align: center;
+    align-content: center;
 }
 
 h2 {
+    font-size: 20px;
+    font-weight: normal;
+    display: block;
+    width: 124px;
+    height: 24px;
+    position: absolute;
+    top: 0px;
+    left: 21px;
     margin: 0;
-    padding: 6px 3px 3px 3px;
+    padding: 3px;
 }
 
 .footer {
