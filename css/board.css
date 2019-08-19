@@ -1,6 +1,7 @@
 html, body {
     font-family: Arial, Helvetica, sans-serif;
-    padding: 6px;
+    padding: 0;
+    margin: 0;
 }
 
 #boardpage {
@@ -9,6 +10,13 @@ html, body {
 
 div {
     display: block;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+.header {
+    position: fixed;
 }
 
 #board-page-header {
@@ -59,42 +67,49 @@ ul {
 }
 
 .content {
-    width: 100%vp;
+    position: relative;
+    width: 100%;
     height: 500px;
-    padding: 6px;
+    padding: 0;
+    margin: 0;
 }
 
 .board-wrapper {
+    margin: 0;
+    padding: 0;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 15% 17% 17% 17% 17% 17%;
+    grid-template-rows: 10% 18% 18% 18% 18% 18%;
 }
 
 .list-wrapper {
     margin: 5px;
+    margin-right: 0px;
     height: 450px;
+    background-color: #dfe1e6;
 }
 
-#list-toDo {
-    background-color: rgb(153, 86, 86);
+.task-count {
+    width: 15px;
+    height: 100%;
+    background-color: red;
+    z-index: 2;
 }
 
-#list-inProgress {
-    background-color:  rgb(250, 248, 152);
+h2 {
+    margin: 0;
+    padding: 6px 3px 3px 3px;
 }
 
-#list-done {
-    background-color: rgb(170, 243, 160);
-}
-
-#toDo {
-    background-color: brown;
-}
-
-#inProgress {
-    background-color: rgb(243, 240, 44);
-}
-
-#done {
-    background-color: rgb(79, 252, 56);
+.footer {
+    position: fixed;
+    height: 32px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #82B4D2;
+    color: #026aa7;
+    text-align: center;
+    line-height: 32px;
+    z-index: 5;
 }
