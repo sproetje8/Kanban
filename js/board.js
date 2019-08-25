@@ -7,6 +7,8 @@ var boardHeader = document.getElementsByTagName('h1')[0];
 title.innerText = selectedBoard.name;
 boardHeader.innerText = selectedBoard.name;
 
+getTaskOwnerInfo();
+
 function getTaskOwnerInfo(name, lastName, taskNumber) {
     var div = document.createElement('div');
     div.className = 'js-' + name + lastName;

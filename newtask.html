@@ -9,9 +9,9 @@
         <h1>New task</h1>
         <form id="frm1" action="" novalidate>
             <!--get task name from user-->
-            <label for="inputName" class="required">Enter task name:</label>
+            <label for="taskName" class="required">Enter task name:</label>
             <span class="required-mark">*</span><br/>
-            <input id="inputName" type="text" autocomplete="off" class="valid" autofocus required><br/><br/>
+            <input id="taskName" type="text" autocomplete="off" class="valid" autofocus required><br/><br/>
             <!--get task description from user-->
             <label for="description">Describe the task:</label>
             <span class="required-mark">*</span><br/>
@@ -30,13 +30,14 @@
             <span class="required-mark">*</span><br/>
             <textarea rows="8" cols="50" id="notes" class="valid" required></textarea><br/><br/>
             <!--ask the user for the task owner's name and last name-->
-            <label for="task-owner" class="required">Enter the name and last name of the task owner:</label>
-            <span class="required-mark">*</span><br/>
-            <input id="task-owner" class="valid" type="text" autocomplete="on" autofocus><br/><br/>
+            <label for="task-owner-name" class="required">Enter the name and last name of the task owner:</label><br/>
+            <input id="task-owner-name" class="valid" type="text" placeholder="name" autocomplete="on" autofocus>
+            <input id="task-owner-lastName" class="valid" type="text" placeholder="lastName" autocomplete="on" autofocus><br/><br/>
             <!--ask the user to select the type of task-->
             <label for="task-type" class="required">Select the type of the task:</label>
             <span class="required-mark">*</span><br/>
             <select name="type" id="task-type" class="valid" required>
+                <option class="zero" value=" "> </option>
                 <option class="feature" value="feature">feature</option>
                 <option class="defect" value="defect">defect</option>
             </select><br/><br/>
@@ -44,9 +45,11 @@
             <label for="board" class="required">Add the task to this board:</label>
             <span class="required-mark">*</span><br/>
             <select name="type" id="board" class="valid" required>
+                <option class="zero" value=" "> </option>
             </select><br/><br/>
             <!--add button to create the task-->
             <button class="btn-create" id="create-new-task" type="submit">Create</button>
         </form>
+        <script src="js/newtask.js"></script>
     </body>
 </html>
