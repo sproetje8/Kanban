@@ -82,12 +82,16 @@ ul {
 
 li {
     display: inline-block;
+    padding: 5px;
 }
 
 .list-header {
     position: relative;
     top: 0;
     left: 0;
+    line-height: 36px;
+    align-content: center;
+    vertical-align: center;
 }
 
 .taskCount {
@@ -95,13 +99,29 @@ li {
     font-weight: bold;
     display: block;
     position: absolute;
-    top: 0px;
-    left:3px;
+    top: 0;
+    left: 3px;
     width: 15px;
-    height: 20px;
-    padding: 3px;
+    padding: 0;
     text-align: center;
     align-content: center;
+}
+
+.headerName {
+    font-size: 20px;
+    font-weight: normal;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 24px;
+    width: 163px;
+    padding: 0;
+    align-content: center;
+}
+
+#list-header-taskOwner {
+    left: 3px;
+    width: 194px;
 }
 
 h2 {

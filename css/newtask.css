@@ -1,0 +1,27 @@
+body, html {
+    display: block;
+}
+
+h1 {
+    margin-left: 20px;
+}
+
+form {
+    margin-left: 20px;
+}
+
+.required-mark {
+    color: orangered;
+}
+
+.red {
+    background-color: red;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.green {
+    background-color: green;
+}

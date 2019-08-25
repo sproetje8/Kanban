@@ -165,11 +165,21 @@ function addBoard(board) {
 
     // create link to board page
     var boardlink = document.createElement('a');
+    var boardlinkId = board.name + '-link';
     boardlink.className = 'brdlnk';
-    boardlink.id = board.name;
+    boardlink.id = boardlinkId;
     boardlink.innerHTML = board.name;
     boardlink.setAttribute('href', 'board.html');
     namediv.appendChild(boardlink);
+
+    boardlink.addEventListener('click', function () {
+        boards.forEach(function (elem) {
+            if (elem.name === board.name) {
+                localStorage.setItem('selectedBoard', JSON.stringify(elem));
+            }
+        });
+    });
+    // console.log(boardClicked);
 
     // create delete button
     var delbtn = document.createElement('button');
@@ -202,3 +212,6 @@ function addBoard(board) {
 function addBoardsToHomePage() {
     boards.forEach(addBoard);
 }
+
+// var boards = JSON.parse(localStorage.getItem('boards'));
+

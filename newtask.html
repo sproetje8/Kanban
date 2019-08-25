@@ -3,9 +3,41 @@
     <head>
         <title>New Task</title>
         <meta charset="utf-8">
-        <link type="text/css" rel="stylesheet" href="newTask.css">
+        <link type="text/css" rel="stylesheet" href="css/newTask.css">
     </head>
     <body>
-        <p>Here comes the new task</p>
+        <h1>New task</h1>
+        <form id="frm1" action="" novalidate>
+            <label for="inputName" class="required">Enter task name:</label>
+            <span class="required-mark">*</span><br/>
+            <input id="inputName" type="text" autocomplete="off" autofocus required><br/><br/>
+            <label for="description">Describe the task:</label>
+            <span class="required-mark">*</span><br/>
+            <textarea rows="5" cols="50" id="description" required></textarea><br/><br/>
+            <label for="priority" class="required">Choose the priority-level of the task:</label>
+            <span class="required-mark">*</span><br/>
+            <select name="priority" id="priority" required>
+                <option class="red" value="high">high</option>
+                <option class="orange" value="medium">medium</option>
+                <option class="green" value="low">low</option>
+            </select><br/><br/>
+            <label for="notes" class="required">Add notes for the task here:</label>
+            <span class="required-mark">*</span><br/>
+            <textarea rows="8" cols="50" id="notes" required></textarea><br/><br/>
+            <label for="task-owner" class="required">Enter the name of the task owner:</label>
+            <span class="required-mark">*</span><br/>
+            <input id="task-owner" type="text" autocomplete="on" autofocus><br/><br/>
+            <label for="task-type" class="required">Enter the type of the task:</label>
+            <span class="required-mark">*</span><br/>
+            <select name="type" id="task-type" required>
+                <option class="feature" value="feature">feature</option>
+                <option class="defect" value="defect">defect</option>
+            </select><br/><br/>
+            <label for="board" class="required">Add the task to this board:</label>
+            <span class="required-mark">*</span><br/>
+            <select name="type" id="board" required>
+            </select><br/><br/>
+            <button class="btn-create" id="create-new-task" type="submit">Create</button>
+        </form>
     </body>
 </html>
