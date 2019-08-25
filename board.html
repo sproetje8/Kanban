@@ -24,71 +24,24 @@
                 </div>
             </div>
         </div>
-        <div class="content">
-            <div class="board-wrapper">
-                <div class="list-wrapper" id="list-taskOwner">
-                    <ul class="list-task-wrapper" id="wrapper-taskOwner">
-                        <li class="list-header" id="header-taskOwner">
-                            <h2 id="header-owner">Task Owner</h2>
-                        </li>
-                        <li class="list-owner" id="owner-first">owner1</li>
-                        <li class="list-owner" id="owner-second">owner2</li>
-                        <li class="list-owner" id="owner-third">owner3</li>
-                        <li class="list-owner" id="owner-fourth">owner4</li>
-                        <li class="list-owner" id="owner-fifth">owner5</li>
-                        <li class="list-owner" id="owner-sixth">owner6</li>
-                        <li class="list-owner" id="owner-seventh">owner7</li>
-                        <li class="list-owner" id="owner-eighth">owner8</li>
-                        <li class="list-owner" id="owner-ninth">owner9</li>
-                        <li class="list-owner" id="owner-tenth">owner10</li>
-                    </ul>
-                </div>
-                <div class="list-wrapper" id="list-toDo">
-                    <ul class="list-task-wrapper" id="wrapper-toDo">
-                        <li class="list-header" id="header-toDo">
-                            <div class="task-count" id="task-count-toDo">0</div>
-                            <h2>To Do</h2>
-                        </li>
-                        <li class="list-task" id="toDo-first">
-<!--                            <a class="task-link" id="task-link-toDo-first">-->
-<!--                                <div class="task-tile" id="task-tile-toDo-first">-->
-<!--                                    <div class="task-identifier" id="task-identifier-toDo-first">Icon</div>-->
-<!--                                    <div>Task ID</div>-->
-<!--                                </div>-->
-<!--                            </a>-->
-                        </li>
-                        <li class="list-task" id="toDo-second"></li>
-                        <li class="list-task" id="toDo-third"></li>
-                        <li class="list-task" id="toDo-fourth"></li>
-                        <li class="list-task" id="toDo-fifth"></li>
-                    </ul>
-                </div>
-                <div class="list-wrapper" id="list-inProgress">
-                    <ul class="list-task-wrapper" id="wrapper-inProgress">
-                        <li class="list-header" id="header-inProgress">
-                            <div class="task-count" id="task-count-inProgress">0</div>
-                            <h2>In Progress</h2>
-                        </li>
-                        <li class="list-task" id="inProgress-first"></li>
-                        <li class="list-task" id="inProgress-second"></li>
-                        <li class="list-task" id="inProgress-third"></li>
-                        <li class="list-task" id="inProgress-fourth"></li>
-                        <li class="list-task" id="inProgress-fifth"></li>
-                    </ul>
-                </div>
-                <div class="list-wrapper" id="list-done">
-                    <ul class="list-task-wrapper" id="wrapper-done">
-                        <li class="list-header" id="done">
-                            <div class="task-count" id="task-count-done">0</div>
-                            <h2>Done</h2>
-                        <li class="list-task" id="done-first"></li>
-                        <li class="list-task" id="done-second"></li>
-                        <li class="list-task" id="done-third"></li>
-                        <li class="list-task" id="done-fourth"></li>
-                        <li class="list-task" id="done-fifth"></li>
-                    </ul>
-                </div>
-            </div>
+        <div id="content">
+            <ul class="container">
+                <li class="list-header">
+                    <span class="list-header" id="list-header-taskOwner">Task Owner</span>
+                </li>
+                <li class="list-header" id="list-header-toDO">
+                    <span class="taskCount" id="taskCount-toDo">0</span>
+                    <span>To Do</span>
+                </li>
+                <li class="list-header" id="list-header-inProgress">
+                    <span class="taskCount" id="taskCount-inProgress">0</span>
+                    <span>In Progress</span>
+                </li>
+                <li class="list-header" id="list-header-done" >
+                    <span class="taskCount" id="taskCount-done">0</span>
+                    <span>Done</span>
+                </li>
+            </ul>
         </div>
         <footer class="footer">&copy; 2019 Evelien Kulikova</footer>
         <script src="js/board.js"></script>

@@ -6,7 +6,7 @@ html, body {
     margin: 0;
 }
 
-#boardpage {
+#board-page {
     background-color: #F7F8F8;
 }
 
@@ -63,31 +63,21 @@ ul {
     border: solid #F7F8F8;
 }
 
-.content {
+#content {
     position: relative;
     width: 100%;
     height: 500px;
     padding: 0;
     margin: 0;
-}
-
-.board-wrapper {
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 10% 18% 18% 18% 18% 18%;
-}
-
-.list-wrapper {
-    margin: 5px;
-    margin-right: 0px;
-    height: 450px;
     background-color: #dfe1e6;
 }
 
-ul#list-task-wrapper {
-    height: 400px;
+.container {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 200px);
+    grid-template-rows: auto;
 }
 
 li {
@@ -100,7 +90,7 @@ li {
     left: 0;
 }
 
-.task-count {
+.taskCount {
     font-size: 20px;
     font-weight: bold;
     display: block;
@@ -110,7 +100,6 @@ li {
     width: 15px;
     height: 20px;
     padding: 3px;
-    background-color: #dfe1e6;
     text-align: center;
     align-content: center;
 }
