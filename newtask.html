@@ -11,15 +11,16 @@
             <!--get task name from user-->
             <label for="inputName" class="required">Enter task name:</label>
             <span class="required-mark">*</span><br/>
-            <input id="inputName" type="text" autocomplete="off" autofocus required><br/><br/>
+            <input id="inputName" type="text" autocomplete="off" class="valid" autofocus required><br/><br/>
             <!--get task description from user-->
             <label for="description">Describe the task:</label>
             <span class="required-mark">*</span><br/>
-            <textarea rows="5" cols="50" id="description" required></textarea><br/><br/>
+            <textarea rows="5" cols="50" id="description" class="valid" required></textarea><br/><br/>
             <!--ask user to choose the priority of the task-->
             <label for="priority" class="required">Choose the priority-level of the task:</label>
             <span class="required-mark">*</span><br/>
-            <select name="priority" id="priority" required>
+            <select name="priority" id="priority" class="valid" required>
+                <option class="zero" value=" "> </option>
                 <option class="red" value="high">high</option>
                 <option class="orange" value="medium">medium</option>
                 <option class="green" value="low">low</option>
@@ -27,22 +28,22 @@
             <!--ask the user to write notes for the task-->
             <label for="notes" class="required">Add notes for the task here:</label>
             <span class="required-mark">*</span><br/>
-            <textarea rows="8" cols="50" id="notes" required></textarea><br/><br/>
+            <textarea rows="8" cols="50" id="notes" class="valid" required></textarea><br/><br/>
             <!--ask the user for the task owner's name and last name-->
             <label for="task-owner" class="required">Enter the name and last name of the task owner:</label>
             <span class="required-mark">*</span><br/>
-            <input id="task-owner" type="text" autocomplete="on" autofocus><br/><br/>
+            <input id="task-owner" class="valid" type="text" autocomplete="on" autofocus><br/><br/>
             <!--ask the user to select the type of task-->
             <label for="task-type" class="required">Select the type of the task:</label>
             <span class="required-mark">*</span><br/>
-            <select name="type" id="task-type" required>
+            <select name="type" id="task-type" class="valid" required>
                 <option class="feature" value="feature">feature</option>
                 <option class="defect" value="defect">defect</option>
             </select><br/><br/>
             <!--ask the user which board to add the task to-->
             <label for="board" class="required">Add the task to this board:</label>
             <span class="required-mark">*</span><br/>
-            <select name="type" id="board" required>
+            <select name="type" id="board" class="valid" required>
             </select><br/><br/>
             <!--add button to create the task-->
             <button class="btn-create" id="create-new-task" type="submit">Create</button>

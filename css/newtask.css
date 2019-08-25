@@ -14,14 +14,18 @@ form {
     color: orangered;
 }
 
+.invalid {
+    border: solid 3px orangered;
+}
+
 .red {
-    background-color: red;
+    background-color: rgba(255, 80, 58, 1);
 }
 
 .orange {
-    background-color: orange;
+    background-color: #ffb23d;
 }
 
 .green {
-    background-color: green;
+    background-color: lightgreen;
 }
