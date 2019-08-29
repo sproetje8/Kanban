@@ -10,7 +10,7 @@
         <div id="allcontent">
             <div id="header">
                 <span class="header-logo">Kanban Board</span>
-                <button id="create-task" type="button"><a class="inactive" id="task-link" href=''><i class="far fa-plus-square"></i> Add new task</a></button>
+                <div id="create-task"><a class="inactive" id="task-link" href=''><i class="far fa-plus-square"></i> Add new task</a></div>
             </div>
             <main>
                 <ul class="js-board-container" id="boardList">
@@ -24,7 +24,7 @@
                 <div class="modal-content">
                     <div class="close">+</div>
                     <img src="images/kanban-icon.jpg" id="kanban-icon" alt="Kanban icon">
-                    <form id="frm1" action="" novalidate>
+                    <form id="frm1" novalidate>
                         <label for='inputName'>Enter a Board Name<br/><em>(Alphabets only, min 3, unique)</em></label>
                         <input id="inputName" type="text" autocomplete="off">
                         <button class="btn-create" id="create-new-board" type="button">Create</button>
