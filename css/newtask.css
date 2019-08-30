@@ -29,3 +29,48 @@ form {
 .green {
     background-color: lightgreen;
 }
+
+.add-note {
+    position: relative;
+    width: 380px;
+    height: 26px;
+    padding: 0;
+    margin: 0;
+}
+
+.add {
+    position: absolute;
+    width: 20px;
+    height: 26px;
+    top: 0;
+    left: 0;
+    background-color: #e7e3e3;
+    display: inline-block;
+    text-align: center;
+    line-height: 26px;
+    vertical-align: center;
+}
+
+.add-note-input {
+    position: absolute;
+    width: 330px;
+    height: 20px;
+    top: 0;
+    left: 20px;
+    display: inline-block;
+}
+
+.delete-note {
+    position: absolute;
+    width: 20px;
+    height: 26px;
+    top: 0;
+    right: 0;
+    font-size: 28px;
+    background-color: transparent;
+    display: inline-block;
+    text-align: center;
+    line-height: 26px;
+    vertical-align: center;
+    transform: rotate(45deg);
+}

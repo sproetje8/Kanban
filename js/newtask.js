@@ -5,6 +5,7 @@ init();
 
 function init () {
     addBoardsToDropDown(boards);
+    addFieldForNotes();
 }
 
 function addBoardsToDropDown (boards) {
@@ -22,13 +23,23 @@ function addBoardsToDropDown (boards) {
     });
 }
 
+function addFieldForNotes () {
+    document.getElementsByClassName('add-note-input').addEventListener('blur', function () {
+        var counter = 1;
+        var addNoteElement = document.getElementsByClassName('add-note-input');
+        addNoteInputId = 'js-' + 'add-note-input' + counter++;
+        addNoteElement.id = addNoteInputId;
+    });
+}
+
+
 document.getElementById('create-new-task').addEventListener('click', validateInput);
 
 function validateInput () {
     var taskNameElement = document.getElementById('taskName');
     var descriptionElement = document.getElementById('description');
     var priorityElement = document.getElementById('priority');
-    var notesElement = document.getElementById('notes');
+    
     var taskOwnerNameElement = document.getElementById('task-owner-name');
     var taskOwnerLastNameElement = document.getElementById('task-owner-lastName');
     var typeElement = document.getElementById('task-type');
@@ -37,7 +48,7 @@ function validateInput () {
     var taskName = taskNameElement.value;
     var description = descriptionElement.value;
     var priority = priorityElement.value;
-    var notes = notesElement.value;
+   
     var taskOwnerName = taskOwnerNameElement.value;
     var type = typeElement.value;
     var board = boardElement.value;
@@ -63,12 +74,12 @@ function validateInput () {
             priorityElement.className = 'valid';
         }
 
-        if (notes === '' || notes === ' ') {
-            notesElement.className = 'invalid';
-            alert('Notes are required');
-        } else {
-            notesElement.className = 'valid';
-        }
+        // if (notes === '' || notes === ' ') {
+        //     notesElement.className = 'invalid';
+        //     alert('Notes are required');
+        // } else {
+        //     notesElement.className = 'valid';
+        // }
 
         if (type === '' || type === ' ') {
             typeElement.className = 'invalid';
@@ -87,22 +98,22 @@ function validateInput () {
         if (taskNameElement.className === 'valid' &&
             descriptionElement.className === 'valid' &&
             priorityElement.className === 'valid' &&
-            notesElement.className === 'valid' &&
+            // notesElement.className === 'valid' &&
             typeElement.className === 'valid' &&
             boardElement.className === 'valid') {
-            taskObjectConstructor(taskName, description, priority, notes, taskOwnerName, taskOwnerLastNameElement, type, board);
+            taskObjectConstructor(taskName, description, priority, taskOwnerName, taskOwnerLastNameElement, type, board);
         } else {
             document.getElementById('create-new-task').addEventListener('click', validateInput);
         }
 
 }
 
-function taskObjectConstructor(taskName, description, priority, notes, taskOwnerName, taskOwnerLastNameElement, type, board) {
+function taskObjectConstructor(taskName, description, priority, taskOwnerName, taskOwnerLastNameElement, type, board) {
     var taskObject = {
         taskName : taskName,
         description : description,
         priority : priority,
-        notes : notes,
+        // notes : notes,
         taskOwnerName : taskOwnerName,
         taskOwnerLastNameElement : taskOwnerLastNameElement,
         type : type,

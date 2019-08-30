@@ -48,9 +48,20 @@
             <div class="modal-content">
                 <button type="button" class="close"><span class="close-sign">+</span></button>
                 <form id="frm-taskEdit" novalidate>
-                    <label for='inputName'>Enter a Board Name<br/><em>(Alphabets only, min 3, unique)</em></label>
-                    <input id="inputName" type="text" autocomplete="off">
-                    <button class="btn-create" id="create-new-board" type="button">Create</button>
+                    <label for="task-ID">Task ID:</label><br/>
+                    <input id="task-ID" type="text" autocomplete="off"></br></br>
+                    <label for="taskName">Task Name:<br/><em>(max 100 characters)</em></label>
+                    <input class="input-field" id="taskName" type="text" autocomplete="off" maxlength="100"></br></br>
+                    <label for="taskDescription">Task Description:</br><em>(max 100 characters)</em></label></br>
+                    <textarea id="taskDescription" type="text" autocomplete="off"></textarea></br></br>
+                    <label for="task-settings-priority">Task Priority:</label></br>
+                    <select name="priority" id="task-settings-priority" class="task-settings-drop-down" required>
+                        <option class="zero"> </option>
+                        <option class="red" value="high">high</option>
+                        <option class="orange" value="medium">medium</option>
+                        <option class="green" value="low">low</option>
+                    </select><br/><br/>
+                    <button class="btn-save" id="save-task" type="button">Save</button>
                 </form>
             </div>
         </div>

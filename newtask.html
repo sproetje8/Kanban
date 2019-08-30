@@ -28,7 +28,13 @@
             <!--ask the user to write notes for the task-->
             <label for="notes" class="required">Add notes for the task here:</label>
             <span class="required-mark">*</span><br/>
-            <textarea rows="8" cols="50" id="notes" class="" required></textarea><br/><br/>
+            <div id="notes">
+                <div class="add-note">
+                    <div class="add">+</div>
+                    <input type="text" class="add-note-input" id="" placeholder="Add a note ..." autocomplete="off">
+                    <div class="delete-note">+</div>
+                </div>
+            </div></br></br>
             <!--ask the user for the task owner's name and last name-->
             <label for="task-owner-name" class="required">Enter the name and last name of the task owner:</label><br/>
             <input id="task-owner-name" class="" type="text" placeholder="name" autocomplete="on">

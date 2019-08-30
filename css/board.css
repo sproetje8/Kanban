@@ -198,3 +198,28 @@ button.close {
     transform: rotate(45deg);
     cursor: pointer;
 }
+
+.input-field {
+    width: 250px;
+}
+
+#taskDescription {
+    width: 250px;
+    height: 100px;
+}
+
+#task-settings-priority {
+    width: 80px;
+}
+
+.red {
+    background-color: rgba(255, 80, 58, 1);
+}
+
+.orange {
+    background-color: #ffb23d;
+}
+
+.green {
+    background-color: lightgreen;
+}
