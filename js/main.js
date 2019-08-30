@@ -50,7 +50,7 @@ function checkInput() {
         if (!regexp1.test(boardName)) {
             alert('Alphabets only, min 3');
         } else if (boards.some(function (el) {
-            return el.name == boardName
+            return el.name == boardName;
         })) {
             alert('This name already exists, enter another one.');
         } else {
@@ -89,16 +89,17 @@ function composeBoardObject(boardName, createdMillisec, lastEditMillisec, creati
         created: creationDate,
         edit: lastEditDate
     };
+
     boards.push(obj);
     localStorage.setItem('boards', JSON.stringify(boards));
     clearHomePage();
     sortAndShow();
 }
 
-function clearHomePage(){
+function clearHomePage() {
     var element = document.querySelectorAll(".board-tile");
     Array.prototype.forEach.call(element,  function(node){
-        node.parentNode.removeChild(node)
+        node.parentNode.removeChild(node);
     });
 }
 

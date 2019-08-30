@@ -44,6 +44,16 @@
             </ul>
         </div>
         <footer class="footer">&copy; 2019 Evelien Kulikova</footer>
+        <div class="bg-modal" id="bg-modal-taskEdit">
+            <div class="modal-content">
+                <button type="button" class="close"><span class="close-sign">+</span></button>
+                <form id="frm-taskEdit" novalidate>
+                    <label for='inputName'>Enter a Board Name<br/><em>(Alphabets only, min 3, unique)</em></label>
+                    <input id="inputName" type="text" autocomplete="off">
+                    <button class="btn-create" id="create-new-board" type="button">Create</button>
+                </form>
+            </div>
+        </div>
         <script src="js/board.js"></script>
     </body>
 </html>

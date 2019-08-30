@@ -19,7 +19,7 @@ function addBoardsToDropDown (boards) {
         selectBoard.appendChild(optionElement);
 
         return selectBoard;
-    })
+    });
 }
 
 document.getElementById('create-new-task').addEventListener('click', validateInput);
@@ -33,7 +33,7 @@ function validateInput () {
     var taskOwnerLastNameElement = document.getElementById('task-owner-lastName');
     var typeElement = document.getElementById('task-type');
     var boardElement = document.getElementById('board');
-
+    
     var taskName = taskNameElement.value;
     var description = descriptionElement.value;
     var priority = priorityElement.value;
@@ -106,7 +106,8 @@ function taskObjectConstructor(taskName, description, priority, notes, taskOwner
         taskOwnerName : taskOwnerName,
         taskOwnerLastNameElement : taskOwnerLastNameElement,
         type : type,
-        board : board
+        board : board,
+        column : 'toDo'
     };
 
     tasks.push(taskObject);
