@@ -1,11 +1,12 @@
 var tasks = [];
+tasks = JSON.parse(localStorage.getItem('tasks'));
 var boards = JSON.parse(localStorage.getItem('boards'));
 
 init();
 
 function init () {
     addBoardsToDropDown(boards);
-    addFieldForNotes();
+    // addFieldForNotes();
 }
 
 function addBoardsToDropDown (boards) {
@@ -23,23 +24,41 @@ function addBoardsToDropDown (boards) {
     });
 }
 
-function addFieldForNotes () {
-    document.getElementsByClassName('add-note-input').addEventListener('blur', function () {
-        var counter = 1;
-        var addNoteElement = document.getElementsByClassName('add-note-input');
-        addNoteInputId = 'js-' + 'add-note-input' + counter++;
-        addNoteElement.id = addNoteInputId;
-    });
-}
+// function addFieldForNotes () {
+//     var addNoteElement = document.querySelector('.add-note-input');
+//     addNoteElement.addEventListener('keyup', function(e) {
+//         if (e.code === "Enter") {
+//             e.preventDefault();
+//             addNoteElement.blur();
+//         }
+//     });
 
+//     addNoteElement.addEventListener('blur', function () {
+//         var counter = 1;
+//         var addNoteInputId = 'js-' + 'add-note-input' + counter;
+//         addNoteElement.id = addNoteInputId;
+//         counter++;
+//         var notediv = document.createElement('div');
+//         notediv.className = "add-note";
+//         notediv.innerHTML = 'div class="add">+</div>
+//         <input type="text" class="add-note-input" id="" placeholder="Add a note ..." autocomplete="off">
+//         <div class="delete-note">+</div>'
+
+//     });<div class="add-note">
+//                     <div class="add">+</div>
+//                     <input type="text" class="add-note-input" id="" placeholder="Add a note ..." autocomplete="off">
+//                     <div class="delete-note">+</div>
+//                 </div>
+// }
 
 document.getElementById('create-new-task').addEventListener('click', validateInput);
 
 function validateInput () {
+    // var notes = {};
+
     var taskNameElement = document.getElementById('taskName');
     var descriptionElement = document.getElementById('description');
     var priorityElement = document.getElementById('priority');
-    
     var taskOwnerNameElement = document.getElementById('task-owner-name');
     var taskOwnerLastNameElement = document.getElementById('task-owner-lastName');
     var typeElement = document.getElementById('task-type');
@@ -48,8 +67,8 @@ function validateInput () {
     var taskName = taskNameElement.value;
     var description = descriptionElement.value;
     var priority = priorityElement.value;
-   
     var taskOwnerName = taskOwnerNameElement.value;
+    var taskOwnerLastName = taskOwnerLastNameElement.value;
     var type = typeElement.value;
     var board = boardElement.value;
 
@@ -101,21 +120,21 @@ function validateInput () {
             // notesElement.className === 'valid' &&
             typeElement.className === 'valid' &&
             boardElement.className === 'valid') {
-            taskObjectConstructor(taskName, description, priority, taskOwnerName, taskOwnerLastNameElement, type, board);
+            taskObjectConstructor(taskName, description, priority, taskOwnerName, taskOwnerLastName, type, board);
         } else {
             document.getElementById('create-new-task').addEventListener('click', validateInput);
         }
 
 }
 
-function taskObjectConstructor(taskName, description, priority, taskOwnerName, taskOwnerLastNameElement, type, board) {
+function taskObjectConstructor(taskName, description, priority, taskOwnerName, taskOwnerLastName, type, board) {
     var taskObject = {
         taskName : taskName,
         description : description,
         priority : priority,
         // notes : notes,
         taskOwnerName : taskOwnerName,
-        taskOwnerLastNameElement : taskOwnerLastNameElement,
+        taskOwnerLastName : taskOwnerLastName,
         type : type,
         board : board,
         column : 'toDo'

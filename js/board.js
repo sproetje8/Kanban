@@ -1,5 +1,3 @@
-
-
 var selectedBoard = JSON.parse(localStorage.getItem('selectedBoard'));
 var title = document.getElementsByTagName('title')[0];
 var boardHeader = document.getElementsByTagName('h1')[0];
