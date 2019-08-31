@@ -22,7 +22,7 @@ function init(selectedBoardName, tasks) {
 }
 
 getTaskOwnerInfo();
-
+showTaskOwners();
 
 function getTaskOwnerInfo() {
     var taskOwnerInfo = filteredTasks.map(function(filteredTask) {
@@ -32,21 +32,27 @@ function getTaskOwnerInfo() {
     uniqueTaskOwners = Array.from(new Set(taskOwnerInfo));
 }
 
-console.log(uniqueTaskOwners);
-
-    // var div = document.createElement('div');
-    // div.className = 'js-' + taskOwnerName;
-
-    // div.innerHTML =
-    //     '<div class="board__name">' +
-    //     '    <span>' + taskOwnerName + '</span>' +
-    //     '</div>' +
-    //     '<div class="board__taskCount">' +
-    //     '    <span class="board__tasks">Number of tasks: </span>' +
-    //     '    <span class="board__tasks-number">' + taskNumber + '</span>' +
-    //     '</div>';
-
-    // return div;
+function showTaskOwners () {
+    var ownerRowCounter = 2;
+    uniqueTaskOwners.forEach(function (uniqueTaskOwner) {
+        var li = document.createElement('li');
+        li.className = 'js-taskOwner';
+        li.id = 'js-' + uniqueTaskOwner;
+    
+        li.innerHTML =
+            '<span class="board__taskOwner">' + uniqueTaskOwner + '</span>' +
+            '<div class="board__taskCount">' +
+            '    <span class="board__tasksOwnerCount">Number of tasks: </span>' +
+            '    <span class="board__tasks-number">0</span>' +
+            '</div>';
+        li.style.gridColumnStart = 1;
+        li.style.gridColumnEnd = 2;
+        li.style.gridRowStart = ownerRowCounter;
+        li.style.gridRowEnd = ownerRowCounter + 1;
+        ownerRowCounter++;
+        document.getElementById('board-container').appendChild(li); 
+    });
+}    
 
 document.getElementById('close-task-settings').addEventListener('click', function () {
     document.getElementById('bg-modal-taskEdit').style.display = 'none';

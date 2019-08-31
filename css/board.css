@@ -75,9 +75,12 @@ ul {
 .container {
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: repeat(4, 200px);
-    grid-template-rows: auto;
+    grid-template-rows: max-content;
+    grid-gap: 4px;
 }
 
 li {
@@ -85,7 +88,15 @@ li {
     padding: 5px;
 }
 
+ul.container>li {
+    background-color: rgb(156, 211, 245);
+    display: block;
+}
+
 .list-header {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    height: 40px;
     position: relative;
     top: 0;
     left: 0;
@@ -139,6 +150,13 @@ h2 {
 
 #header-owner {
     left: 3px;
+}
+
+.js-taskOwner {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    background-color: aqua;
+    
 }
 
 .footer {
