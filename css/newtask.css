@@ -30,7 +30,7 @@ form {
     background-color: lightgreen;
 }
 
-.add-note {
+/* .add-note {
     position: relative;
     width: 380px;
     height: 26px;
@@ -73,4 +73,8 @@ form {
     line-height: 26px;
     vertical-align: center;
     transform: rotate(45deg);
+} */
+
+#task-owner-name {
+    width: 200px;
 }

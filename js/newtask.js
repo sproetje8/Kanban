@@ -60,7 +60,6 @@ function validateInput () {
     var descriptionElement = document.getElementById('description');
     var priorityElement = document.getElementById('priority');
     var taskOwnerNameElement = document.getElementById('task-owner-name');
-    var taskOwnerLastNameElement = document.getElementById('task-owner-lastName');
     var typeElement = document.getElementById('task-type');
     var boardElement = document.getElementById('board');
     
@@ -68,7 +67,6 @@ function validateInput () {
     var description = descriptionElement.value;
     var priority = priorityElement.value;
     var taskOwnerName = taskOwnerNameElement.value;
-    var taskOwnerLastName = taskOwnerLastNameElement.value;
     var type = typeElement.value;
     var board = boardElement.value;
 
@@ -120,21 +118,20 @@ function validateInput () {
             // notesElement.className === 'valid' &&
             typeElement.className === 'valid' &&
             boardElement.className === 'valid') {
-            taskObjectConstructor(taskName, description, priority, taskOwnerName, taskOwnerLastName, type, board);
+            taskObjectConstructor(taskName, description, priority, taskOwnerName, type, board);
         } else {
             document.getElementById('create-new-task').addEventListener('click', validateInput);
         }
 
 }
 
-function taskObjectConstructor(taskName, description, priority, taskOwnerName, taskOwnerLastName, type, board) {
+function taskObjectConstructor(taskName, description, priority, taskOwnerName, type, board) {
     var taskObject = {
         taskName : taskName,
         description : description,
         priority : priority,
         // notes : notes,
         taskOwnerName : taskOwnerName,
-        taskOwnerLastName : taskOwnerLastName,
         type : type,
         board : board,
         column : 'toDo'
