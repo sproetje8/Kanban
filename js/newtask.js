@@ -1,6 +1,6 @@
-var tasks = [];
-tasks = JSON.parse(localStorage.getItem('tasks'));
+var tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 var boards = JSON.parse(localStorage.getItem('boards'));
+// var taskId = 1;
 
 init();
 
@@ -55,7 +55,6 @@ document.getElementById('create-new-task').addEventListener('click', validateInp
 
 function validateInput () {
     // var notes = {};
-
     var taskNameElement = document.getElementById('taskName');
     var descriptionElement = document.getElementById('description');
     var priorityElement = document.getElementById('priority');
@@ -70,63 +69,72 @@ function validateInput () {
     var type = typeElement.value;
     var board = boardElement.value;
 
-        if (taskName === '' || taskName === ' ') {
-            taskNameElement.className = 'invalid';
-            alert('Task name is required');
-        } else {
-            taskNameElement.className = 'valid';
-        }
+    if (taskName === '' || taskName === ' ') {
+        taskNameElement.className = 'invalid';
+        alert('Task name is required');
+    } else {
+        taskNameElement.className = 'valid';
+    }
 
-        if (description === '' || description === ' ') {
-            descriptionElement.className = 'invalid';
-            alert('Task description is required');
-        } else {
-            descriptionElement.className = 'valid';
-        }
+    if (description === '' || description === ' ') {
+        descriptionElement.className = 'invalid';
+        alert('Task description is required');
+    } else {
+        descriptionElement.className = 'valid';
+    }
 
-        if (priority === '' || priority === ' ') {
-            priorityElement.className = 'invalid';
-            alert('Priority is required');
-        } else {
-            priorityElement.className = 'valid';
-        }
+    if (priority === '' || priority === ' ') {
+        priorityElement.className = 'invalid';
+        alert('Priority is required');
+    } else {
+        priorityElement.className = 'valid';
+    }
 
-        // if (notes === '' || notes === ' ') {
-        //     notesElement.className = 'invalid';
-        //     alert('Notes are required');
-        // } else {
-        //     notesElement.className = 'valid';
-        // }
+    // if (notes === '' || notes === ' ') {
+    //     notesElement.className = 'invalid';
+    //     alert('Notes are required');
+    // } else {
+    //     notesElement.className = 'valid';
+    // }
 
-        if (type === '' || type === ' ') {
-            typeElement.className = 'invalid';
-            alert('The type is required');
-        } else {
-            typeElement.className = 'valid';
-        }
+    if (type === '' || type === ' ') {
+        typeElement.className = 'invalid';
+        alert('The type is required');
+    } else {
+        typeElement.className = 'valid';
+    }
 
-        if (board === '' || board === ' ') {
-            boardElement.className = 'invalid';
-            alert('The board is required');
-        } else {
-            boardElement.className = 'valid';
-        }
+    if (board === '' || board === ' ') {
+        boardElement.className = 'invalid';
+        alert('The board is required');
+    } else {
+        boardElement.className = 'valid';
+    }
 
-        if (taskNameElement.className === 'valid' &&
-            descriptionElement.className === 'valid' &&
-            priorityElement.className === 'valid' &&
-            // notesElement.className === 'valid' &&
-            typeElement.className === 'valid' &&
-            boardElement.className === 'valid') {
-            taskObjectConstructor(taskName, description, priority, taskOwnerName, type, board);
-        } else {
-            document.getElementById('create-new-task').addEventListener('click', validateInput);
-        }
-
+    if (taskNameElement.className === 'valid' &&
+        descriptionElement.className === 'valid' &&
+        priorityElement.className === 'valid' &&
+        // notesElement.className === 'valid' &&
+        typeElement.className === 'valid' &&
+        boardElement.className === 'valid') {
+        taskObjectConstructor(taskName, description, priority, taskOwnerName, type, board);
+    } else {
+        document.getElementById('create-new-task').addEventListener('click', validateInput);
+    }
 }
+
+function getCurrentTaskId() {
+    var taskId = Number(localStorage.getItem('taskId')) || 0;
+    var newTaskId = taskId + 1;
+    
+    localStorage.setItem('taskId', newTaskId);
+    return newTaskId;
+}
+
 
 function taskObjectConstructor(taskName, description, priority, taskOwnerName, type, board) {
     var taskObject = {
+        taskId : getCurrentTaskId(),
         taskName : taskName,
         description : description,
         priority : priority,
